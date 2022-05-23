@@ -226,7 +226,8 @@ p{
 .row{
     margin: 5%;
     display: flex;
-    justify-content: space-around ;
+    justify-content: space-around;
+    align-items: center;
 
 }
 .course-col{
