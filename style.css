@@ -39,25 +39,30 @@ a{
 }
 .text-box p{
     margin: 10px 0 40px;
-    font-size: 14px;
+    font-size: 16px;
     color: rgb(230, 221, 230);
 }
+
 .hero-btn{
-    display: inline-block;
-    text-decoration: none;
-    color: rgb(230, 221, 230);
-    border: 1px solid rgb(230, 221, 230);
-    padding: 12px 34px;
-    font-size: 13px;
-    background: transparent;
-    position: relative;
-    cursor: pointer;
+
+  display: inline-block;
+  text-decoration: none;
+  color: rgb(230, 221, 230);
+  border: 1px solid rgb(230, 221, 230);
+  padding: 15px 25px;
+  font-size: 13px;
+  background: transparent;
+  position: relative;
+  cursor: pointer;
+  border-radius: 3px;
+
 }
 .hero-btn:hover{
     border: 1px solid rgba(92, 92, 92, 0.288);
     background: rgba(92, 92, 92, 0.267);
     transition: 1s;
 }
+
 
 header{
     z-index: 999;
@@ -66,7 +71,7 @@ header{
     left: 0;
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     padding: 20px 100px;
     transition: 0.6s;
@@ -96,7 +101,7 @@ header{
   header .menu a{
     color: rgba(235, 229, 229, 0.555);
     font-size: 16px;
-    font-weight: 500;
+    font-weight: 100;
     text-decoration: none;
     margin: 0 30px;
     padding: 0 10px;
@@ -124,14 +129,16 @@ header{
   }
 
   header .menu{
-    position: fixed;
+
+    position: absolute;
     background: #3d424652;
+    backdrop-filter: blur(6px);
     flex-direction: column;
-    min-width: 400px;
+    min-width: 350px;
     height: 100vh;
     top: 0;
     right: -100%;
-    padding: 80px 50px;
+    padding: -300px 60px;
     transition: 0.5s;
     transition-property: right;
   }
@@ -148,11 +155,36 @@ header{
   }
 
   header .menu a{
-    display: block;
+    display: grid;
     font-size: 20px;
     margin: 20px;
     padding: 0 15px;
+    margin-right: 220px;
   }
+
+  .text-box{
+    width: 90%;
+    color: rgb(230, 221, 230);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+}
+
+  .text-box h1{
+    margin-top: -16rem;
+    font-size: 31px;
+}
+header .brand{
+  color: rgba(235, 229, 229, 0.555);
+  font-size: 20px;
+  font-weight: 600;
+  margin-left: -150px;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 2px;
+}
 }
 
 @media (max-width: 630px){
@@ -160,6 +192,7 @@ header{
     font-size: 50px;
     line-height: 60px;
   }
+
 }
 
 /*-------- about -----------*/
@@ -184,12 +217,12 @@ h1{
     
 }
 p{
-    color: rgb(230, 221, 230);
-    font-size: 14px;
-    font-weight: 300;
-    line-height: 22px;
-    padding: 10px;
+  color: rgb(230, 221, 230);
+  font-size: 22px;
+  font-size: 600;
+  
 }
+
 .row{
     margin: 5%;
     display: flex;
@@ -214,11 +247,43 @@ h3{
 .course-col:hover{
     box-shadow: 0 0 20px rgb(126, 126, 126);
 }
-@media(max-width: 700px){
+@media(max-width: 710px){
     .row{
         flex-direction: column;
     }
+    h1{
+      color: rgb(230, 221, 230);
+      font-size: 31px;
+      font-size: 300;
+      margin-top: -15%;
+  }
+  .course-col{
+    flex-basis: 31%;
+    background: rgba(196, 193, 193, 0.24);
+    border-radius: 10px;
+    margin-bottom: 10%;
+    padding: 15px 9px ;
+    box-sizing: border-box;
+    transition: 0.5s;
 }
+
+
+p{
+  color: rgb(230, 221, 230);
+  font-size: 12px;
+  font-size: 600;
+
+}
+}
+
+
+h3{
+  text-align: center;
+  font-weight: 600;
+  margin: 10px 0 ;
+}
+
+
 
 /*---------- Menu ---------*/
 
@@ -235,6 +300,22 @@ h3{
     height: 100vh;
     width: 100%;
 }
+
+
+
+@media screen and (max-width:710px) {
+h1{
+  width: 90%;
+  color: rgb(230, 221, 230);
+  position: absolute;
+  top: 200px;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  text-align: center;
+  font-size: 31px;
+}
+}
+
 
 /*---------- Reserve ---------*/
 
@@ -287,6 +368,7 @@ h3{
     transform: translate(-50%,-50%);
     text-align: center;
     font-size: 62px;
+    
 }
 
 #reserve div{
@@ -326,23 +408,27 @@ h3{
 #submit{
     text-align: center;
 }
-#submit input{
+#reserve #submit input{
     
-    display: inline-block;
-    text-decoration: none;
-    color: rgb(230, 221, 230);
-    border: 1px solid rgb(230, 221, 230);
-    padding: 12px 34px;
-    font-size: 13px;
-    background: transparent;
-    position: relative;
-    cursor: pointer;
+  display: inline-block;
+  text-decoration: none;
+  color: rgb(230, 221, 230);
+  border: 1px solid rgb(230, 221, 230);
+  padding: 12px 25px;
+  font-size: 16px;
+  background: transparent;
+  position: relative;
+  cursor: pointer;
+  width: 12rem;
+  border-radius: 3px;
+  
 }
-#submit input:hover{
+#reserve #submit input:hover{
     
     border: 1px solid rgba(92, 92, 92, 0.288);
     background: rgba(92, 92, 92, 0.267);
     transition: 1s;
+    color: rgb(230, 221, 230);
 }
 
 select option {
@@ -366,15 +452,63 @@ input[type=number] {
 ::-webkit-calendar-picker-indicator {     filter: invert(1); } 
 
 @media screen and (max-width:710px) {
-    .main-form{
-        text-align: center;
-    }
+  .main-form{
+      text-align: center;
+  }
 }
+
+
+
+
+
+@media screen and (max-width:710px) {
+  .form{
+    width: 325px;
+} 
+#reserve h1{
+  width: 90%;
+  color: rgb(230, 221, 230);
+  position: absolute;
+  top: 200px;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  text-align: center;
+  font-size: 31px;
+}
+#reserve div input {
+  width: 100%;
+  
+  background: none;
+  border: 1px rgba(196, 193, 193, 0.24);
+  font-size: 12px;
+  color: rgba(196, 193, 193, 0.24);
+  outline: none;
+  padding: 3px 0 3px 10px;
+  margin-top: 10px;
+}
+#reserve div select{
+  width: 104%;
+  
+  background: none;
+  border: 1px rgba(196, 193, 193, 0.24) !important;
+  font-size: 12px;
+  color: rgba(196, 193, 193, 0.24);
+  outline: none;
+  padding: 3px 0 3px 10px;
+  margin-top: 10px;
+}
+#reserve div span{
+  width: 100%;
+  
+  color: rgba(255, 255, 255, 0.438);
+  font-size: 18px;
+}
+
+}
+
 
 /*---------- Contact ---------*/
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
-
-
 #contact {
 
     width: 80%;
@@ -484,6 +618,7 @@ input[type=number] {
     background: transparent;
     position: relative;
     cursor: pointer;
+    border-radius: 3px;
   }
   
   .contact-form #send-btn:hover{
@@ -534,3 +669,67 @@ input[type=number] {
     border-left: 8px solid #FFA502;
     border-radius: 4px;
   }
+  @media screen and (max-width:720px) {
+    .contact-section{
+        text-align: center;
+    }
+    .contact-form h2{
+      width: 90%;
+      color: rgb(230, 221, 230);
+      position: absolute;
+      top: 10%;
+      right: 10%;
+      
+      text-align: center;
+    font-size: 36px;
+  }
+  .contact-form textarea{
+    background: rgba(92, 92, 92, 0.288);
+    color: #fff;
+    border: none;
+    width: 80%;
+    padding: 12px;
+    font-size: 11px;
+    min-height: 100px;
+    max-height: 200px;
+    resize: vertical;
+    border-radius: 5px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    opacity: 0.9;
+    position: center;
+  }
+  .contact-form .text-box1{
+    background: rgba(92, 92, 92, 0.288);
+    color: #fff;
+    border: none;
+    width: 80%;
+    height: 25px;
+    padding: 13px;
+    font-size: 11px;
+    border-radius: 5px;
+    box-shadow: 0 1px 1px rgba(92, 92, 92, 0.288);
+    margin-bottom: 20px;
+    opacity: 0.9;
+    position: center;
+  }
+  .contact-info{
+    color: #fff;
+    max-width: 250px;
+    line-height: 36px;
+    padding-left: 25px;
+    font-size: 12px;
+  }
+  .contact-form #send-btn{
+    float: right;
+    display: inline-block;
+    text-decoration: none;
+    color: rgb(230, 221, 230);
+    border: 1px solid rgb(230, 221, 230);
+    padding: 9px 16px;
+    font-size: 12px;
+    background: transparent;
+    position: relative;
+    cursor: pointer;
+  }
+}
