@@ -122,8 +122,25 @@ header{
     display: none;
   }
   
+  @media (max-width: 1600px){
+   
+    .text-box{
+      width: 90%;
+      color: rgb(230, 221, 230);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      text-align: center;
+  }
+  
+    .text-box h1{
+      font-size: 31px;
+  }
+ 
+  }
 
-@media (max-width: 1060px){
+@media (max-width: 600px){
   header .btn{
     display: block;
   }
@@ -173,7 +190,6 @@ header{
 }
 
   .text-box h1{
-    margin-top: -16rem;
     font-size: 31px;
 }
 header .brand{
@@ -187,10 +203,81 @@ header .brand{
 }
 }
 
-@media (max-width: 630px){
+
+@media (max-width: 930px){
+  header .btn{
+    display: block;
+  }
+
+  header .menu{
+
+    position: absolute;
+    background: #3d424652;
+    backdrop-filter: blur(6px);
+    flex-direction: column;
+    min-width: 350px;
+    height: 100vh;
+    top: 0;
+    right: -100%;
+    padding: -300px 60px;
+    transition: 0.5s;
+    transition-property: right;
+  }
+
+  header .menu.active{
+    right: 0;
+  }
+
+  header .menu .close-btn{
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 25px;
+  }
+
+  header .menu a{
+    display: grid;
+    font-size: 20px;
+    margin: 20px;
+    padding: 0 15px;
+    margin-right: 220px;
+  }
+
+  .text-box{
+    width: 90%;
+    color: rgb(230, 221, 230);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+}
+
+  .text-box h1{
+    font-size: 55px;
+}
+
+.hero-btn{
+  font-size: 16px;
+}
+
+header .brand{
+  color: rgba(235, 229, 229, 0.555);
+  font-size: 20px;
+  font-weight: 600;
+  margin-left: -150px;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 2px;
+}
+}
+
+@media (max-width: 1700px){
   .section-main h1{
     font-size: 50px;
     line-height: 60px;
+    justify-content: center;
+    align-items: center;
   }
 
 }
@@ -228,6 +315,7 @@ p{
     display: flex;
     justify-content: space-around;
     align-items: center;
+    width: 30ve;
 
 }
 .course-col{
@@ -248,7 +336,7 @@ h3{
 .course-col:hover{
     box-shadow: 0 0 20px rgb(126, 126, 126);
 }
-@media(max-width: 710px){
+@media(max-width: 700px){
     .row{
         flex-direction: column;
     }
@@ -284,6 +372,40 @@ h3{
   margin: 10px 0 ;
 }
 
+@media(max-width: 1000px){
+  .row{
+      flex-direction: column;
+  }
+  h1{
+    color: rgb(230, 221, 230);
+    font-size: 55px;
+    font-size: 300;
+    margin-top: -15%;
+}
+.course-col{
+  flex-basis: 31%;
+  background: rgba(196, 193, 193, 0.24);
+  border-radius: 20px;
+  margin-bottom: 10%;
+  padding: 20px 13px ;
+  box-sizing: border-box;
+  transition: 0.5s;
+}
+
+
+p{
+color: rgb(230, 221, 230);
+font-size: 30px;
+font-size: 600;
+
+}
+h3{
+  text-align: center;
+  font-weight: 600;
+  margin: 10px 0 ;
+  font-size: 38px;
+}
+}
 
 
 /*---------- Menu ---------*/
@@ -306,12 +428,8 @@ h3{
 
 @media screen and (max-width:710px) {
 h1{
-  width: 90%;
   color: rgb(230, 221, 230);
-  position: absolute;
   top: 200px;
-  left: 50%;
-  transform: translate(-50%,-50%);
   text-align: center;
   font-size: 31px;
 }
@@ -521,7 +639,6 @@ input[type=number] {
     background-position: center;
     background-size: cover;
     position: relative;
-    height: 100vh;
     width: 100%;
     background-position: fixed;
 }
@@ -588,9 +705,6 @@ input[type=number] {
     opacity: 0.9;
   }
   
-  .contact-form .text-box1:first-child{
-    margin-right: 15px;
-  }
   
   .contact-form textarea{
     background: rgba(92, 92, 92, 0.288);
