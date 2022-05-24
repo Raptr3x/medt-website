@@ -20,10 +20,10 @@ if (isset($_POST['login_btn'])) {
 	// attempt login if no errors on form
 	if (count($errors) == 0) {
 		$password = md5($password);
-        echo $password;
+        // echo $password;
 		
 		$sql = "SELECT * FROM ".USERS_TABLE." WHERE email='$email' AND password='$password' AND deleted=0 LIMIT 1";
-        echo $sql;
+        // echo $sql;
 		$stmt = $conn->query($sql);
 		$results = $stmt->fetchAll();
 
