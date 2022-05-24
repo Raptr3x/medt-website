@@ -36,7 +36,7 @@ $conn = create_conn();
 if(isAdmin()){
     $onlyUser = "";
 }else{
-    $onlyUser = "AND rider_id=".$user['id'];
+    $onlyUser = "AND rider_id=".$user['userID'];
 }
 
 
