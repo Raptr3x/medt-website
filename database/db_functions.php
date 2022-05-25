@@ -86,6 +86,13 @@ function select_cond($conn, $table, $after_where){
     return $stmt->fetchAll();
 }
 
+function get_last_id($conn, $table, $id){
+    $sql = "SELECT {$id} FROM {$table} ORDER BY {$id} DESC LIMIT 0, 1";
+    echoIt($sql);
+    $stmt = $conn->query($sql);
+    return $stmt->fetchAll()[0][$id];
+}
+
 function free_sql($conn, $sql){
     echoIt($sql);
     $stmt = $conn->query($sql);

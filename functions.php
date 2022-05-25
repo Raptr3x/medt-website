@@ -1,6 +1,9 @@
 <?php
 session_start();
 
+function sanitize_user_input_text($str){        
+    return str_replace(["'","\"", ";", "*", "=", "|", "(", ")"], "", $str);
+}
 
 function isAdmin(){
     if ($_SESSION['user']['access_level']==1) {

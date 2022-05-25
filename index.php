@@ -1,4 +1,38 @@
-<!Doctype html>
+<?php
+require_once "./functions.php";
+require_once "./constants.php";
+require_once "./database/db_functions.php";
+
+
+$conn = create_conn();
+
+if(isset($_POST['name'])){
+
+    $name = sanitize_user_input_text($_POST['name']);
+    $combinedDT = date('Y-m-d H:i:s', strtotime($_POST['date'].", ".$_POST['time']));
+    $email = sanitize_user_input_text($_POST['email']);
+    $number = filter_var($_POST['number'], FILTER_SANITIZE_NUMBER_INT);;
+    $people = filter_var($_POST['people'], FILTER_SANITIZE_NUMBER_INT);;
+
+
+    $usersCol = "fullname, email, phone";
+    $usersVal = "'".$name."', '".$email."', '".$number."'";
+    insert($conn, CUST, $usersCol, $usersVal);
+    $customerID = get_last_id($conn, CUST, "customerID");
+
+
+    // get free tables
+    $people1 = $people+1;
+    $tableID = free_sql($conn, "select tableID from free_tables where maxPeople = {$people} or maxPeople = {$people1} LIMIT 1")[0]['tableID'];
+
+    $resCol = "reservationDatetime, numOfPeople, tableID, customerID";
+    $resVal = "'".$combinedDT."', ".$people.", ".$tableID.", ".$customerID."";
+    insert($conn, RESER, $resCol, $resVal);
+
+}
+?>
+
+<!doctype html>
 <html>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -93,7 +127,7 @@
 
     <h1>Reserviere einen <br> Tisch</h1> <br><br><br><br>
 
-    <form action="submit_reservation.php" method="POST">
+    <form action="index.php" method="POST">
         <div>
             <span>Your full name ?</span>
             <input type="text" name="name" id="name" placeholder="Write your name here..." required>
@@ -117,12 +151,11 @@
                 <option value="4">8 People</option>
                 <option value="4">9 People</option>
             </select>
-            <!-- <---this is the select option--->
+            <!-- this is the select option -->
         </div>
         <div>
             <span>What time ?</span>
             <input type="time" name="time" id="time"  min="10:00" max="23:00" required>
-            
         </div>
         <div>
             <span>What is the date ?</span>

@@ -17,7 +17,7 @@
                                     <tr>
                                         <th class="font-weight-semi-bold border-top-0 py-2">#</th>
                                         <th class="font-weight-semi-bold border-top-0 py-2">Date and time</th>
-                                        <th class="font-weight-semi-bold border-top-0 py-2">Number of people</th>
+                                        <th class="font-weight-semi-bold border-top-0 py-2"># of people</th>
                                         <th class="font-weight-semi-bold border-top-0 py-2">Customer name</th>
                                         <th class="font-weight-semi-bold border-top-0 py-2">Table id</th>
                                         <th class="font-weight-semi-bold border-top-0 py-2">E-mail</th>
@@ -33,7 +33,7 @@ require_once("./database/db_functions.php");
 
 $conn = create_conn();
 
-$rows = free_sql("SELECT r.resID, r.reservationDatetime, r.numOfPeople, CONCAT(c.name, ' ', c.lastname) as fullname, r.tableID, c.email, c.phone FROM reservations r INNER JOIN customers c ON r.customerID = c.customerID WHERE r.deleted=0");
+$rows = free_sql($conn, "SELECT r.resID, r.reservationDatetime, r.numOfPeople, c.fullname, r.tableID, c.email, c.phone FROM reservations r INNER JOIN customers c ON r.customerID = c.customerID WHERE r.deleted=0 order by r.reservationDatetime desc");
 
 // $rows = array_merge($rows, $rows_old);
 
@@ -44,8 +44,8 @@ foreach ($rows as $row)
 
     // mark past dates
     $past_date_classname = "";
-    $ride_date = date_format(date_create($row['reservationDatetime']),"Y-m-d");
-    $today = date("Y-m-d");
+    $ride_date = date_format(date_create($row['reservationDatetime']),"Y-m-d H:i:s");
+    $today = date("Y-m-d H:i:s");
     if($ride_date<$today){
         $past_date_classname = "disabled";
     }
