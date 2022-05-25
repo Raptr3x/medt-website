@@ -23,9 +23,10 @@ define("UI_JS", UI."/js");
     }
 
 //tables
-define("RIDES_TABLE", DBPREFIX."rides");
-define('USERS_TABLE', DBPREFIX.'users');
-define('RIDE_REQUESTS', DBPREFIX.'ride_requests');
-define('PRICES', DBPREFIX.'prices');
+define("RESER", DBPREFIX."reservations");
+define('USERS', DBPREFIX.'users');
+define('CUST', DBPREFIX.'customers');
+define('TABLES', DBPREFIX.'tables');
+define('MENU', DBPREFIX.'menu');
 
 ?>

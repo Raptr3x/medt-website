@@ -22,7 +22,7 @@ if (isset($_POST['login_btn'])) {
 		$password = md5($password);
         // echo $password;
 		
-		$sql = "SELECT * FROM ".USERS_TABLE." WHERE email='$email' AND password='$password' AND deleted=0 LIMIT 1";
+		$sql = "SELECT * FROM ".USERS." WHERE email='$email' AND password='$password' AND deleted=0 LIMIT 1";
         // echo $sql;
 		$stmt = $conn->query($sql);
 		$results = $stmt->fetchAll();
