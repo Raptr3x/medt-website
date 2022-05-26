@@ -14,12 +14,13 @@ if(!isset($_GET['id']) || !id_exists($conn, RESER, "resID", $_GET['id'])){
 
 if(isset($_GET['s'])){
     // reservation table update
-    updateMultipleSql($conn, RESER, array("reservationDatetime", "numOfPeople", "tableID"), array($_POST['reservationDatetime'], $_POST['numOfPeople'], $_POST['tableID']), "resID", $_GET['id']);
+    updateMultipleSql($conn, RESER, array("reservationDatetime", "numOfPeople", "tableID"), array("'".$_POST['reservationDatetime']."'", "'".$_POST['numOfPeople']."'", "'".$_POST['tableID']), "resID", $_GET['id']);
     // user table update
     $customerID = select_cond($conn, RESER, "resID=".$_GET['id'])[0]['customerID'];
-    updateMultipleSql($conn, CUST, array("fullname", "email", "phone"), array($_POST['fullname'], $_POST['email'], $_POST['phone']), "customerID", $customerID);
+    updateMultipleSql($conn, CUST, array("fullname", "email", "phone"), array($_POST["'".'fullname']."'", "'".$_POST['email']."'", "'".$_POST['phone']."'"), "customerID", $customerID);
     
     echo "<script>window.location = './admin.php?page=editRes&id={$_GET['id']}'</script>";
+    array_push($notification, "Successfully updated!");
 }
 
 

@@ -48,7 +48,7 @@ function updateMultipleSql($mysqli, $table, $fields, $values, $pointer, $pointer
     foreach($fields AS $key => $field) {
         $value = $values[$key];
         if(strtolower($field)=="content") $value = addslashes($value); #escaping quotes in content
-        $ausgabe .= "`".$field."` = '".$value."', ";
+        $ausgabe .= "`".$field."` = ".$value.", ";
     }
 
     // if ($pointer != '') $qry = "WHERE $pointer LIKE $pointer_val"; #??

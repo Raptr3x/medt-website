@@ -4,9 +4,10 @@ require_once "./constants.php";
 
 $conn = create_conn();
 
-if(isset($_GET['remove_reservation_id'])){
-    updateSql($conn, RESER, "deleted", 1, "resID", $_GET['remove_reservation_id']);
-    echo "<script>window.location = './admin.php'</script>";
+if(isset($_GET['remove_menu_item'])){
+    updateSql($conn, MENU, "deleted", 1, "itemID", $_GET['remove_menu_item']);
+    echo "<script>window.location = './admin.php?page=menu'</script>";
+    array_push($notification, "Successfully updated!");
 }
 ?>
 
@@ -41,7 +42,7 @@ if(isset($_GET['remove_reservation_id'])){
 
                                     <?php 
 
-$rows = select($conn, MENU, "itemID");
+$rows = select_cond($conn, MENU, "deleted=0");
 
 // $rows = array_merge($rows, $rows_old);
 
@@ -65,8 +66,8 @@ foreach ($rows as $row)
                         </a>
 
                         <div class="dropdown-menu" aria-labelledby="dropdownPosition">
-                            <a class="dropdown-item" href="admin.php?page=editRes&id=<?php echo $row['resID']; ?>">Edit</a>
-                            <a class="dropdown-item" href="admin.php?page=reservationen&remove_reservation_id=<?php echo $row['resID']; ?>" onclick="return  confirm('Are you really sure that you want to delete reservation for the table <?php echo $row['tableID']; ?> at <?php echo $combinedDT; ?> ?')">Delete</a>
+                            <a class="dropdown-item" href="admin.php?page=editMenu&id=<?php echo $row['itemID']; ?>">Edit</a>
+                            <a class="dropdown-item" href="admin.php?page=menu&remove_menu_item=<?php echo $row['itemID']; ?>" onclick="return  confirm('Are you really sure that you want to delete <?php echo $row['name']; ?>?')">Delete</a>
                         </div>
                     </div>
 
