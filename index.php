@@ -6,24 +6,31 @@ require_once "./database/db_functions.php";
 
 $conn = create_conn();
 
+$errors= [];
+
 if(isset($_POST['name'])){
 
-    $name = sanitize_user_input_text($_POST['name']);
+
+    $name = strtolower(sanitize_user_input_text($_POST['name']));
     $combinedDT = date('Y-m-d H:i:s', strtotime($_POST['date'].", ".$_POST['time']));
-    $email = sanitize_user_input_text($_POST['email']);
-    $number = filter_var($_POST['number'], FILTER_SANITIZE_NUMBER_INT);;
-    $people = filter_var($_POST['people'], FILTER_SANITIZE_NUMBER_INT);;
+    $email = strtolower(sanitize_user_input_text($_POST['email']));
+    $number = filter_var($_POST['number'], FILTER_SANITIZE_NUMBER_INT);
+    $people = filter_var($_POST['people'], FILTER_SANITIZE_NUMBER_INT);
 
 
     $usersCol = "fullname, email, phone";
     $usersVal = "'".$name."', '".$email."', '".$number."'";
-    insert($conn, CUST, $usersCol, $usersVal);
-    $customerID = get_last_id($conn, CUST, "customerID");
-
+	if(!($customerID = select_cond($conn, CUST, "email='".$email."'")[0]['customerID'])){
+		insert($conn, CUST, $usersCol, $usersVal);
+		$customerID = get_last_id($conn, CUST, "customerID");
+	}
 
     // get free tables
     $people1 = $people+1;
-    $tableID = free_sql($conn, "SELECT tableID FROM free_tables WHERE maxPeople = {$people} OR maxPeople = {$people1} LIMIT 1")[0]['tableID'];
+	if(!($tableID = free_sql($conn, "SELECT * FROM tables WHERE tableID NOT IN (SELECT reservations.tableID FROM reservations WHERE DAYOFYEAR(reservationDatetime)=DAYOFYEAR('".$combinedDT."')) AND (maxPeople = {$people} or maxPeople = {$people1}) LIMIT 1")[0]['tableID'])){
+		array_push($errors, "Unfortinately there are no free tables at the moment for the selected date.");
+	}
+
 
     $resCol = "reservationDatetime, numOfPeople, tableID, customerID";
     $resVal = "'".$combinedDT."', ".$people.", ".$tableID.", ".$customerID."";
@@ -51,6 +58,14 @@ if(isset($_POST['name'])){
 	</head>
 
 <body>
+<?php
+if(count($errors)>0){
+	foreach ($errors as $key => $value) {
+		echo "<script>alert('".$errors[$key]."');</script>";
+	}
+}
+
+?>
 <section class="home">
 	<header>
 		
