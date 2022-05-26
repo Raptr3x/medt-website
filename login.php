@@ -86,7 +86,7 @@ if (isset($_POST['login_btn'])) {
 											
 										</div>
 										<div class="form-group no-margin">
-											<input type="submit" class="btn btn-primary btn-block" value="Login" name="login_btn">
+											<input type="submit" class="btn btn-info btn-block" value="Login" name="login_btn">
 										</div>
 									</form>
 								</div>

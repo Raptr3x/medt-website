@@ -8,6 +8,5 @@
 
     <script src="<?php echo UI_JS?>/graindashboard.js"></script>
     <script src="<?php echo UI_JS?>/graindashboard.vendor.js"></script>
-    <script src="<?php echo UI_JS?>/custom.js"></script>
     <title>LuNiBo - Admin</title>
 </head>

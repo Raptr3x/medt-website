@@ -18,6 +18,15 @@
                 case 'reservationen':
                     require_once TEMPLATES."/reservations.php";
                     break;
+				case 'editRes':
+					require_once TEMPLATES."/edit_reservation.php";
+					break;
+				case 'menu':
+					require_once TEMPLATES."/menu.php";
+					break;
+				case 'editMenu':
+					require_once TEMPLATES."/edit_menu.php";
+					break;
                 default:
                     require_once NOTIFICATIONS."/404.php";
                     break;
@@ -27,5 +36,6 @@
 		require_once TEMPLATES."/admin-footer.php";
 		?>
 
+	
 	</body>
 </html>

@@ -28,7 +28,7 @@ if(isset($_POST['name'])){
     // get free tables
     $people1 = $people+1;
 	if(!($tableID = free_sql($conn, "SELECT * FROM tables WHERE tableID NOT IN (SELECT reservations.tableID FROM reservations WHERE DAYOFYEAR(reservationDatetime)=DAYOFYEAR('".$combinedDT."')) AND (maxPeople = {$people} or maxPeople = {$people1}) LIMIT 1")[0]['tableID'])){
-		array_push($errors, "Unfortinately there are no free tables at the moment for the selected date.");
+		array_push($errors, "Unfortinately there are no free tables at the moment for the selected date.\nPlease select another one.");
 	}
 
 

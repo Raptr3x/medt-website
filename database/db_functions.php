@@ -114,6 +114,18 @@ function select_count_sum($conn, $operation, $table, $var, $after_where){
     return $stmt->fetchAll()[0]['access_name'];
 }
 
+function id_exists($conn, $table, $id, $id_value){
+    $sql = "SELECT {$id} FROM {$table} WHERE {$id}={$id_value}";
+    echoIt($sql);
+    
+    $stmt = $conn->query($sql);
+    if(count($stmt->fetchAll())>0){
+        return true;
+    }else{
+        return false;
+    }
+}
+
 function echoIt($str){
     global $debug;
     if($debug){
