@@ -309,6 +309,23 @@ p{
   
 }
 
+/* bogdan */
+
+.box{
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+}
+
+.col-10{
+  width: 80%;
+}
+
+.col-2{
+  width: 20%;
+}
+
+/* bogdan end */
 .row{
     margin: 5%;
     display: flex;
@@ -463,9 +480,8 @@ h3{
 }
 
 .menu-item-name {
-  margin-right: 1.5em;
+  margin: 0 1.5em 0.5em 0;
   color: #fff;
-
 }
 
 .menu-item-price{
@@ -473,7 +489,18 @@ h3{
   font-size: 20px;
 }
 
+
+.menu-item-kcal{
+  color: #fff;
+  font-size: 20px;
+  text-align: end;
+}
+
+
 .menu-item-description {
+  text-align: left;
+  font-weight: 100;
+  opacity: 0.6;
   line-height: 1.6;
 }
 
@@ -705,6 +732,10 @@ input[type=number] {
     position: relative;
     width: 100%;
     background-position: fixed;
+}
+
+h2{
+  color: rgb(230, 221, 230);
 }
 
 .contact-form h2{

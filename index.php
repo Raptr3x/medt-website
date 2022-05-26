@@ -35,8 +35,13 @@ if(isset($_POST['name'])){
     $resCol = "reservationDatetime, numOfPeople, tableID, customerID";
     $resVal = "'".$combinedDT."', ".$people.", ".$tableID.", ".$customerID."";
     insert($conn, RESER, $resCol, $resVal);
-
 }
+
+
+$foods = select_cond($conn, MENU, "itemGroup='food'");
+$drinks = select_cond($conn, MENU, "itemGroup='drink'");
+
+
 ?>
 <!Doctype html>
 <html>
@@ -139,63 +144,56 @@ if(count($errors)>0){
 			Hauptspeisen
 		</h2>
 		<div class="menu-group">
+		<?php
+		foreach ($foods as $food){	
+		?>
 			<div class="menu-item">
-			
-			<div class="menu-item-text">
-				<h3 class="menu-item-heading">
-				<span class="menu-item-name">Bruschetta</span>
-				<span class="menu-item-price">$12.90</span>
-				</h3>
-				<p class="menu-item-description">
-				Nunc efficitur felis vel mi efficitur, sed molestie sem scelerisque. Fusce orci risus,
-				congue eu mauris nec, pretium tincidunt nulla.
-				</p>
+				<div class="menu-item-text">
+					<h3 class="menu-item-heading">
+						<span class="menu-item-name"><?php echo $food['name'] ?></span>
+						<span class="menu-item-price"><?php echo $food['price'] ?>€</span>
+					</h3>
+					<div class="box">
+						<div class="col-10">
+							<p class="menu-item-description"><?php echo $food['description'] ?></p>
+						</div>
+						<div class="col-2">
+							<p class="menu-item-kcal"><?php echo $food['kcal'] ?> kcal</p>
+						</div>
+					</div>
+					</p>
+				</div>
 			</div>
-			</div>
-			<div class="menu-item">
-			
-			<div class="menu-item-text">
-				<h3 class="menu-item-heading">
-				<span class="menu-item-name">Bruschetta</span>
-				<span class="menu-item-price">$12.90</span>
-				</h3>
-				<p class="menu-item-description">
-				Nunc efficitur felis vel mi efficitur, sed molestie sem scelerisque. Fusce orci risus,
-				congue eu mauris nec, pretium tincidunt nulla.
-				</p>
-			</div>
-			</div>
+		<?php
+		}
+		?>
 		</div>
 		<h2 class="menu-group-heading">
-			Dessert
+			Getränke
 		</h2>
 		<div class="menu-group">
+		<?php
+		foreach ($drinks as $drink){
+		?>
 			<div class="menu-item">
-			
-			<div class="menu-item-text">
-				<h3 class="menu-item-heading">
-				<span class="menu-item-name">Bruschetta</span>
-				<span class="menu-item-price">$12.90</span>
-				</h3>
-				<p class="menu-item-description">
-				Nunc efficitur felis vel mi efficitur, sed molestie sem scelerisque. Fusce orci risus,
-				congue eu mauris nec, pretium tincidunt nulla.
-				</p>
+				<div class="menu-item-text">
+					<h3 class="menu-item-heading">
+						<span class="menu-item-name"><?php echo $drink['name'] ?></span>
+						<span class="menu-item-price"><?php echo $drink['price'] ?>€</span>
+					</h3>
+					<div class="box">
+						<div class="col-10">
+							<p class="menu-item-description"><?php echo $drink['description'] ?></p>
+						</div>
+						<div class="col-2">
+							<p class="menu-item-kcal"><?php echo $drink['kcal']?> kcal</p>
+						</div>	
+					</div>
+				</div>
 			</div>
-			</div>
-			<div class="menu-item">
-			
-			<div class="menu-item-text">
-				<h3 class="menu-item-heading">
-				<span class="menu-item-name">Bruschetta</span>
-				<span class="menu-item-price">$12.90</span>
-				</h3>
-				<p class="menu-item-description">
-				Nunc efficitur felis vel mi efficitur, sed molestie sem scelerisque. Fusce orci risus,
-				congue eu mauris nec, pretium tincidunt nulla.
-				</p>
-			</div>
-			</div>
+		<?php
+		}
+		?>
 		</div>
 		</div>
 	</div>

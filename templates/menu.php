@@ -7,7 +7,6 @@ $conn = create_conn();
 if(isset($_GET['remove_menu_item'])){
     updateSql($conn, MENU, "deleted", 1, "itemID", $_GET['remove_menu_item']);
     echo "<script>window.location = './admin.php?page=menu'</script>";
-    array_push($notification, "Successfully updated!");
 }
 ?>
 
@@ -21,7 +20,7 @@ if(isset($_GET['remove_menu_item'])){
                     <div class="card mb-3 mb-md-4">
                         <div class="card-header d-flex justify-content-between">
                             <h5 class="font-weight-semi-bold mb-0">Recent Orders</h5>
-                            <button class="btn btn-info" type="button">Add New<i class="ml-2 gd-plus"></i></button>
+                            <a class="btn btn-info" href="admin.php?page=addItem" type="button">Add New<i class="ml-2 gd-plus"></i></a>
                         </div>
 
                         <div class="card-body pt-0">
@@ -54,7 +53,7 @@ foreach ($rows as $row)
                 <td class="py-3"><?php echo $row['itemID']; ?></td>
                 <td class="py-3"><?php echo $row['name']; ?></td>
                 <td class="py-3"><?php echo $row['description']; ?></td>
-                <td class="py-3"><?php echo $row['group']; ?></td>
+                <td class="py-3"><?php echo $row['itemGroup']; ?></td>
                 <td class="py-3"><?php echo $row['price']."€"; ?></td>
                 <td class="py-3"><?php echo $row['kcal']; ?></td>
 

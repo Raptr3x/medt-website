@@ -27,6 +27,9 @@
 				case 'editMenu':
 					require_once TEMPLATES."/edit_menu.php";
 					break;
+				case 'addItem':
+					require_once TEMPLATES."/add_menu_item.php";
+					break;
                 default:
                     require_once NOTIFICATIONS."/404.php";
                     break;

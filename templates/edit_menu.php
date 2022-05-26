@@ -12,26 +12,49 @@ if(!isset($_GET['id']) || !id_exists($conn, MENU, "itemID", $_GET['id'])){
     die();
 }
 
-if(isset($_GET['s'])){
+if(isset($_GET['u'])){
     // reservation table update
-    updateMultipleSql($conn, MENU, array("name", "description", "group", "price", "kcal"), array("'".$_POST['name']."'", "'".$_POST['description']."'", "'".$_POST['group']."'", $_POST['price'], $_POST['kcal']), "itemID", $_GET['id']);
+    updateMultipleSql($conn, MENU, array("name", "description", "itemGroup", "price", "kcal"), array("'".$_POST['name']."'", "'".$_POST['description']."'", "'".$_POST['group']."'", $_POST['price'], $_POST['kcal']), "itemID", $_GET['id']);
     
-    echo "<script>window.location = './admin.php?page=editMenu&id={$_GET['id']}'</script>";
-    array_push($notification, "Successfully updated!");
+    echo "<script>window.location = './admin.php?page=editMenu&id={$_GET['id']}&s=1'</script>";
 }
 
+
+
 $row = select_cond($conn, MENU, "deleted=0 AND itemID = ".$_GET['id'])[0];
+
+switch ($row['itemGroup']) {
+    case 'food':
+        $drp = '<option value="food" selected>food</option><option value="drink">drink</option>';
+        break;
+    case 'drink':
+        $drp = '<option value="drink">drink</option><option value="food">food</option>';
+        break;
+    default:
+        $drp = '<option value="food" selected>food</option><option value="drink">drink</option>';
+        break;
+}
 
 ?>
 
 <div class="content">
     <div class="py-4 col-xl-5 col-lg-8 col-md-12 px-3 px-md-4">
-        <div class="card">
-            <div class="card-header">
+    <?php
+                if(isset($_GET['s'])){
+                ?>
+                    <div class="alert alert-primary" role="alert">
+                        <p>Successfully updated!</p>
+                    </div>
+                <?php
+                }
+            ?>
+    <div class="card">
+            
+                <div class="card-header">
                 <h4>Edit the Menu</h4>
             </div>
             <div class="card-body pt-0">
-                <form action="admin.php?page=editMenu&id=<?php echo $_GET['id'] ?>&s=1" method="POST">
+                <form action="admin.php?page=editMenu&id=<?php echo $_GET['id'] ?>&u=1" method="POST">
                     
                     <div class="form-group">
                         <label>Item Name</label>
@@ -46,19 +69,19 @@ $row = select_cond($conn, MENU, "deleted=0 AND itemID = ".$_GET['id'])[0];
                         <div class="form-group col-4">
                             <label>Group</label>
                             <select class="custom-select" name="group">
-                                <option value="food" selected>Food</option>
-                                <option value="drink">Drink</option>
+                                <?php echo $drp ?>
                         </select>
                         </div>
                         <div class="form-group col-4">
                             <label>Price</label>
-                            <input type="number" name="price" class="form-control" value="<?php echo $row['price'] ?>">
+                            <input type="number" step="any" name="price" class="form-control" value="<?php echo $row['price'] ?>">
                         </div>
                         <div class="form-group col-4">
                             <label>KCAL</label>
-                            <input type="number" name="kcal" class="form-control" value="<?php echo $row['kcal'] ?>">
+                            <input type="number" step="any" name="kcal" class="form-control" value="<?php echo $row['kcal'] ?>">
                         </div>
                     </div>
+                    
                     
                     <input type="submit" class="btn btn-info mt-5" value="Save changes">
                 </form>  
