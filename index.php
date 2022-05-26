@@ -23,7 +23,7 @@ if(isset($_POST['name'])){
 
     // get free tables
     $people1 = $people+1;
-    $tableID = free_sql($conn, "select tableID from free_tables where maxPeople = {$people} or maxPeople = {$people1} LIMIT 1")[0]['tableID'];
+    $tableID = free_sql($conn, "SELECT tableID FROM free_tables WHERE maxPeople = {$people} OR maxPeople = {$people1} LIMIT 1")[0]['tableID'];
 
     $resCol = "reservationDatetime, numOfPeople, tableID, customerID";
     $resVal = "'".$combinedDT."', ".$people.", ".$tableID.", ".$customerID."";
