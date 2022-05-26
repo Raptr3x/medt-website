@@ -9,8 +9,7 @@ if(isset($_GET['logout'])){
 }
 
 if (isset($_POST['login_btn'])) {
-	$errors   = array();
-
+	$errors= [];
 	$conn = create_conn();
 
 	// grab form values
