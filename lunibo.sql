@@ -29,7 +29,7 @@ CREATE TABLE `customers` (
   `phone` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`customerID`),
   UNIQUE KEY `customers_customerID_uindex` (`customerID`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +38,7 @@ CREATE TABLE `customers` (
 
 LOCK TABLES `customers` WRITE;
 /*!40000 ALTER TABLE `customers` DISABLE KEYS */;
-INSERT INTO `customers` VALUES (1,'Jane','jane.doe@gmail.com','0676 812 82 53'),(2,'Barbara Goble','BarbaraDGoble@cuvox.de','0676 740 57 42'),(3,'Michael Frei','MichaelFrei@cuvox.de','0676 410 00 64'),(4,'Marcel Gruenwald','MarcelGruenewald@einrot.com','0650 780 13 13'),(5,'Doreen Roth','DoreenRoth@cuvox.de','0650 432 89 56'),(6,'Peter Theissen','PeterTheissen@cuvox.de','0664 748 32 64'),(11,'Bogdan','bogdan.caleta@gmail.com','+4368181790350'),(12,'Bogdan Caleta','bogdan.caleta@gmail.com','068181790350');
+INSERT INTO `customers` VALUES (1,'Jane','jane.doe@gmail.com','0676 812 82 53'),(2,'Barbara Goble','BarbaraDGoble@cuvox.de','0676 740 57 42'),(3,'Michael Frei','MichaelFrei@cuvox.de','0660 894 15 72'),(4,'Marcel Gruenwald','MarcelGruenewald@einrot.com','0650 780 13 13'),(5,'Doreen Roth','DoreenRoth@cuvox.de','0650 432 89 56'),(6,'Peter Theissen','PeterTheissen@cuvox.de','0664 748 32 64');
 /*!40000 ALTER TABLE `customers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -67,14 +67,14 @@ CREATE TABLE `menu` (
   `itemID` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(30) NOT NULL,
   `description` text NOT NULL,
-  `price` decimal(2,0) NOT NULL,
-  `listOrder` int(11) NOT NULL,
+  `itemGroup` varchar(15) DEFAULT NULL,
+  `price` float NOT NULL,
   `kcal` int(11) DEFAULT NULL,
+  `deleted` int(11) DEFAULT 0,
   PRIMARY KEY (`itemID`),
   UNIQUE KEY `menu_itemID_uindex` (`itemID`),
-  UNIQUE KEY `menu_name_uindex` (`name`),
-  UNIQUE KEY `menu_listOrder_uindex` (`listOrder`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  UNIQUE KEY `menu_name_uindex` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -83,6 +83,7 @@ CREATE TABLE `menu` (
 
 LOCK TABLES `menu` WRITE;
 /*!40000 ALTER TABLE `menu` DISABLE KEYS */;
+INSERT INTO `menu` VALUES (1,'Esterhàzy-Rostbraten','mit Wurzelgemüse und Kapern in Rahmsauce, dazu servieren wir breite Nudeln','food',14.99,631,0),(2,'Kaiserschnitzel','in Kapern-Zitronensauce, dazu servieren wir Reis','food',14.99,722,0),(4,'Coca Cola','0.35l','drink',2.99,533,0),(5,'Helles vom Fass','0,50l ','drink',4.19,221,0),(6,'Tafelspitzcocktail','mit Kernöl und Zwiebel','food',16.22,920,0),(8,'Dunkles','0.50l','drink',4.15,533,0),(9,'Radler','0.30l','drink',3.33,123,0),(12,'Alt-Wiener Backfleisch','verfeinert mit Kren und in der Pfanne goldbraun gebacken, dazu servieren wir Bratkartoffeln','food',12.22,335,0),(13,'Almdudler','0.35l','drink',2.19,219,0);
 /*!40000 ALTER TABLE `menu` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -106,7 +107,7 @@ CREATE TABLE `reservations` (
   KEY `reservations_customers_customerID_fk` (`customerID`),
   CONSTRAINT `reservations_customers_customerID_fk` FOREIGN KEY (`customerID`) REFERENCES `customers` (`customerID`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `reservations_tables_tableID_fk` FOREIGN KEY (`tableID`) REFERENCES `tables` (`tableID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -115,7 +116,7 @@ CREATE TABLE `reservations` (
 
 LOCK TABLES `reservations` WRITE;
 /*!40000 ALTER TABLE `reservations` DISABLE KEYS */;
-INSERT INTO `reservations` VALUES (3,'2022-06-25 16:07:37',5,10,4,0),(4,'2022-06-25 16:07:44',2,3,2,0),(5,'2022-06-25 16:07:47',2,4,3,0),(6,'2022-03-28 16:07:59',4,6,1,0),(7,'2022-02-03 12:40:00',3,7,5,0),(8,'2022-05-25 16:07:51',6,12,6,0),(9,'2022-02-07 12:00:00',10,18,4,0),(10,'2022-02-06 21:00:00',3,5,11,0),(11,'2022-08-05 21:45:00',4,8,12,0);
+INSERT INTO `reservations` VALUES (3,'2022-06-25 19:06:26',5,10,4,0),(4,'2022-06-25 20:07:12',2,3,2,0),(5,'2022-06-25 16:07:47',2,4,3,0),(6,'2022-03-28 16:07:59',4,6,1,0),(7,'2022-02-03 12:40:00',3,7,5,0),(8,'2022-05-25 16:07:51',6,12,6,0);
 /*!40000 ALTER TABLE `reservations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -202,4 +203,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-25 22:55:35
+-- Dump completed on 2022-05-27  0:23:01
