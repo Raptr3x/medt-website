@@ -15,9 +15,9 @@ global $servername, $username, $password, $dbname;
 
 // raspberry
 // $servername = "192.168.0.220";
-//$username = "pi";
-//$password = "raspberry";
-//$dbname = "lunibo";
+// $username = "pi";
+// $password = "raspberry";
+// $dbname = "lunibo";
 // if($sub=="www"){
 //     // hosting
 //     $servername = "localhost";
