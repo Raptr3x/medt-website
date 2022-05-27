@@ -15,7 +15,9 @@ if(!isset($_GET['id']) || !id_exists($conn, RESER, "resID", $_GET['id'])){
 if(isset($_GET['s'])){
 
     // check if date is taken
-        // if yes, leave it but 
+        // if yes, leave it but
+
+    
 
     // reservation table update
     updateMultipleSql($conn, RESER, array("reservationDatetime", "numOfPeople", "tableID"), array("'".$_POST['reservationDatetime']."'", "'".$_POST['numOfPeople']."'", $_POST['tableID']), "resID", $_GET['id']);

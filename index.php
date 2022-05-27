@@ -7,6 +7,7 @@ require_once "./database/db_functions.php";
 $conn = create_conn();
 
 $errors= [];
+$notifications= [];
 
 if(isset($_POST['name'])){
 
@@ -21,22 +22,29 @@ if(isset($_POST['name'])){
     $usersCol = "fullname, email, phone";
     $usersVal = "'".$name."', '".$email."', '".$number."'";
 	// kad musterija ne postoji izbacuje undefined offset
-	if(!($customerID = select_cond($conn, CUST, "email='".$email."'")[0]['customerID'])){
+	$customerID = select_cond($conn, CUST, "email='".$email."'");
+	if(count($customerID)==0){
 		insert($conn, CUST, $usersCol, $usersVal);
 		$customerID = get_last_id($conn, CUST, "customerID");
+	}else{
+		$customerID = $customerID[0]['customerID'];
 	}
 
     // get free tables
     $people1 = $people+1;
-	if(!($tableID = free_sql($conn, "SELECT * FROM tables WHERE tableID NOT IN (SELECT reservations.tableID FROM reservations WHERE DAYOFYEAR(reservationDatetime)=DAYOFYEAR('".$combinedDT."')) AND (maxPeople = {$people} or maxPeople = {$people1}) LIMIT 1")[0]['tableID'])){
+	$tableID = free_sql($conn, "SELECT * FROM tables WHERE tableID NOT IN (SELECT reservations.tableID FROM reservations WHERE DAYOFYEAR(reservationDatetime)=DAYOFYEAR('".$combinedDT."')) AND (maxPeople = {$people} or maxPeople = {$people1}) LIMIT 1");
+	if(count($tableID)==0){
 		array_push($errors, "Unfortinately there are no free tables at the moment for the selected date.\nPlease select another one.");
+	}else{
+		$tableID = $tableID[0]['tableID'];
+		$resCol = "reservationDatetime, numOfPeople, tableID, customerID";
+		$resVal = "'".$combinedDT."', ".$people.", ".$tableID.", ".$customerID."";
+		insert($conn, RESER, $resCol, $resVal);
+		array_push($notifications, "Your reservation has been successfully created! Thank you very much!");
 	}
-
-
-    $resCol = "reservationDatetime, numOfPeople, tableID, customerID";
-    $resVal = "'".$combinedDT."', ".$people.", ".$tableID.", ".$customerID."";
-    insert($conn, RESER, $resCol, $resVal);
 }
+
+
 
 
 $foods = select_cond($conn, MENU, "itemGroup='food'");
@@ -207,7 +215,20 @@ if(count($errors)>0){
 
 	<h1>Reserviere einen <br> Tisch</h1> <br><br><br><br>
 
-	<form action="index.php" method="POST">
+	<form action="index.php#reserve" method="POST">
+		<?php
+		if(count($errors)>0){
+			foreach ($errors as $key => $value) {
+				echo "<p class='text-danger'>".$errors[$key]."</p>";
+			}
+		}else if(count($notifications)>0){
+			foreach ($notifications as $key => $value) {
+				echo "<p class='text-success'>".$notifications[$key]."</p>";
+			}
+		}
+		
+		
+		?>
 		<div>
 			<span>Your full name ?</span>
 			<input type="text" name="name" id="name" placeholder="Write your name here..." required>
@@ -236,7 +257,6 @@ if(count($errors)>0){
 		<div>
 			<span>What time ?</span>
 			<input type="time" name="time" id="time"  min="10:00" max="23:00" required>
-			
 		</div>
 		<div>
 			<span>What is the date ?</span>
@@ -250,7 +270,6 @@ if(count($errors)>0){
 		<div id="submit">
 			<input type="submit" value="SUBMIT" id="submit">
 		</div>
-
 
 	</form>
 
