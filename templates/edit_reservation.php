@@ -13,11 +13,15 @@ if(!isset($_GET['id']) || !id_exists($conn, RESER, "resID", $_GET['id'])){
 }
 
 if(isset($_GET['s'])){
+
+    // check if date is taken
+        // if yes, leave it but 
+
     // reservation table update
-    updateMultipleSql($conn, RESER, array("reservationDatetime", "numOfPeople", "tableID"), array("'".$_POST['reservationDatetime']."'", "'".$_POST['numOfPeople']."'", "'".$_POST['tableID']), "resID", $_GET['id']);
+    updateMultipleSql($conn, RESER, array("reservationDatetime", "numOfPeople", "tableID"), array("'".$_POST['reservationDatetime']."'", "'".$_POST['numOfPeople']."'", $_POST['tableID']), "resID", $_GET['id']);
     // user table update
     $customerID = select_cond($conn, RESER, "resID=".$_GET['id'])[0]['customerID'];
-    updateMultipleSql($conn, CUST, array("fullname", "email", "phone"), array($_POST["'".'fullname']."'", "'".$_POST['email']."'", "'".$_POST['phone']."'"), "customerID", $customerID);
+    updateMultipleSql($conn, CUST, array("fullname", "email", "phone"), array("'".$_POST['fullname']."'", "'".$_POST['email']."'", "'".$_POST['phone']."'"), "customerID", $customerID);
     
     echo "<script>window.location = './admin.php?page=editRes&id={$_GET['id']}'</script>";
     array_push($notification, "Successfully updated!");
@@ -25,6 +29,15 @@ if(isset($_GET['s'])){
 
 
 $row = free_sql($conn, "SELECT r.resID, r.reservationDatetime, r.numOfPeople, c.fullname, r.tableID, c.email, c.phone FROM ".RESER." r INNER JOIN ".CUST." c ON r.customerID = c.customerID WHERE r.deleted=0 AND r.resID = ".$_GET['id']." order by r.reservationDatetime desc")[0];
+
+
+$disabled = "";
+$people1 = $row['numOfPeople']+1;
+if(!($free_tables = free_sql($conn, "SELECT * FROM tables WHERE tableID NOT IN (SELECT reservations.tableID FROM reservations WHERE DAYOFYEAR(reservationDatetime)=DAYOFYEAR('".$row['reservationDatetime']."')) AND (maxPeople = {$row['numOfPeople']} or maxPeople = {$people1})"))){
+    array_push($errors, "Unfortinately there are no free tables at the moment for the selected date.\nPlease select another one.");
+    // should set input to readonly
+    $disabled = "readonly";
+}
 
 ?>
 
@@ -51,7 +64,16 @@ $row = free_sql($conn, "SELECT r.resID, r.reservationDatetime, r.numOfPeople, c.
                         </div>
                         <div class="form-group col-6">
                             <label>Table ID</label>
-                            <input type="number" name="tableID" class="form-control" value="<?php echo $row['tableID'] ?>">
+                            <select class="custom-select" name="tableID" <?php echo $disabled; ?>>
+                                <option value="<?php echo $row['tableID']; ?>" selected><?php echo $row['tableID']; ?></option>
+                                <?php
+                                foreach ($free_tables as $key => $value) {  
+                                ?>
+                                    <option value="<?php echo $free_tables[$key]['tableID']; ?>"><?php echo $free_tables[$key]['tableID']; ?></option>
+                                <?php
+                                }
+                                ?>
+                            </select>
                         </div>
                     </div>
                     
