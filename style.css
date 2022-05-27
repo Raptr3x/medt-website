@@ -13,7 +13,7 @@ a{
     color: rgb(228, 207, 207);
     text-decoration: none;
 }
-
+-
 #section-main{
     position: relative;
     min-height: 100vh;
@@ -352,7 +352,40 @@ h3{
 .course-col:hover{
     box-shadow: 0 0 20px rgb(126, 126, 126);
 }
-@media(max-width: 700px){
+@media(max-width: 2000px){
+  .row{
+      flex-direction :column ;
+      align-items: center;
+  justify-content: center;
+  }
+  h1{
+    color: rgb(230, 221, 230);
+    font-size: 31px;
+    font-size: 300;
+    
+}
+.course-col{
+  flex-basis: 31%;
+  background: rgba(196, 193, 193, 0.24);
+  border-radius: 10px;
+  margin-bottom: -10%;
+  padding: 15px 9px ;
+  box-sizing: border-box;
+  transition: 0.5s;
+  margin: 3rem;
+  width: 800px;
+}
+
+
+p{
+color: rgb(230, 221, 230);
+font-size: 12px;
+font-size: 600;
+
+}
+}
+
+@media(max-width: 1000px){
     .row{
         flex-direction: column;
     }
@@ -370,6 +403,7 @@ h3{
     padding: 15px 9px ;
     box-sizing: border-box;
     transition: 0.5s;
+    width: fit-content;
 }
 
 
@@ -379,6 +413,13 @@ p{
   font-size: 600;
 
 }
+}
+
+
+h3{
+  text-align: center;
+  font-weight: 600;
+  margin: 10px 0 ;
 }
 
 
@@ -615,6 +656,19 @@ h1{
     font-size: 25px;
 }
 
+#reserve div input {
+  padding: 4px;
+  border-radius: 3px;
+  background-color: rgba(230, 221, 230, 0.082);
+}
+
+#reserve div select {
+  border: 2px solid rgba(230, 221, 230, 0.24);
+  border-radius: 3px;
+  background-color: rgba(230, 221, 230, 0.082);
+  padding: 2px;
+}
+
 #submit{
     text-align: center;
 }
@@ -713,7 +767,18 @@ input[type=number] {
   color: rgba(255, 255, 255, 0.438);
   font-size: 18px;
 }
+#reserve div input {
 
+  border-radius: 3px;
+  background-color: rgba(230, 221, 230, 0.082);
+}
+
+#reserve div select {
+  border: 2px solid rgba(230, 221, 230, 0.24);
+  border-radius: 3px;
+  background-color: rgba(230, 221, 230, 0.082);
+  
+}
 }
 
 

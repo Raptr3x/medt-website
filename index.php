@@ -118,18 +118,15 @@ if(count($errors)>0){
 	<div class="row">
 		<div class="course-col">
 			<h3>Lukas</h3>
-			<p>hdaskljfgbsk;dfjbg;kadbowsajbeo;ighbeawso;rdhigfo;<br>;kdhaz;klfgjvhbad;e lifgtop eray;
-				lafsdhjjg;kadshf sda;IHFG ;LKS</p>
+			<p>Ich heiße Zankel Lukas und bin am ..... geboren</p>
 		</div>
 		<div class="course-col">
 			<h3>Nikola</h3>
-			<p>hdaskljfgbsk;dfjbg;kadbowsajbeo;ighbeawso;rdhigfo;<br>;kdhaz;klfgjvhbad;e lifgtop eray;
-				lafsdhjjg;kadshf sda;IHFG ;LKS</p>
+			<p>Mein Name lautet Panic Nikola ich bin am 17.09.1999 geboren </p>
 		</div>
 		<div class="course-col">
 			<h3>Bogdan</h3>
-			<p>hdaskljfgbsk;dfjbg;kadbowsajbeo;ighbeawso;rdhigfo;<br>;kdhaz;klfgjvhbad;e lifgtop eray;
-				lafsdhjjg;kadshf sda;IHFG ;LKS</p>
+			<p>Ich heiße Caleta Ivkovic Bogdan uns bin am ...... geboren</p>
 		</div>
 	</div>
 </section>
