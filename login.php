@@ -26,9 +26,10 @@ if (isset($_POST['login_btn'])) {
 		$stmt = $conn->query($sql);
 		$results = $stmt->fetchAll();
 
-		//stavi try except umesto if tako da ako fejluje onda je pogresna sifra
-		if ($results[0]['userID']!=null) { // user found
-			// console_log($results[0]['id']);
+		if(count($results)==0){
+			array_push($errors, "Wrong E-Mail/password combination");
+		}
+		elseif ($results[0]['userID']!=null) { // user found
 			$_SESSION['user'] = $results[0];
 			$_SESSION['success']  = "You are now logged in";
 			
@@ -38,13 +39,10 @@ if (isset($_POST['login_btn'])) {
 			}else{
 				header('location: admin.php');
 			}
-		}else {
-			array_push($errors, "Wrong E-Mail/password combination");
 		}
  }
 }
 
-// Dodaj da prikazuje errore iz error array
 ?>
 
 <!DOCTYPE html>

@@ -6,16 +6,17 @@ require_once "./functions.php";
 
 $conn = create_conn();
 
-
-if(isset($_GET['newItem'])){
-    insert($conn, MENU, "name, description, itemGroup, price, kcal", "'".$_POST['name']."', '".$_POST['description']."', '".$_POST['group']."', ".$_POST['price'].", ".$_POST['kcal']);
-    echo "<script>window.location = './admin.php?page=addItem&s=1'</script>";
-}
-
-
 $notifications=[];
 $errors=[];
 $warnings=[];
+
+
+if(isset($_POST['submit'])){
+    insert($conn, MENU, "name, description, itemGroup, price, kcal", "'".$_POST['name']."', '".$_POST['description']."', '".$_POST['group']."', ".$_POST['price'].", ".$_POST['kcal']);
+    array_push($notifications, "Successfully added!");
+}
+
+// obavesti ako vec postoji INTEGRITY VIOLATION tako nes je error
 
 
 ?>
@@ -23,15 +24,8 @@ $warnings=[];
 <div class="content">
     <div class="py-4 col-xl-5 col-lg-8 col-md-12 px-3 px-md-4">
     <?php
-            // OVDEW NE STO NE RADI!!
-            if(isset($_GET['s'])){
-            ?>
-                <div class="alert alert-primary" role="alert">
-                    <p>Successfully added!</p>
-                </div>
-            <?php
-            }
-            ?>
+        require_once("./informations.php");
+    ?>
     <div class="card">
             <div class="card-header">
                 <h4>Add new item to the Menu</h4>
@@ -64,7 +58,7 @@ $warnings=[];
                         </div>
                     </div>
                     
-                    <input type="submit" class="btn btn-info mt-5" value="Save changes">
+                    <input type="submit" name="submit" class="btn btn-info mt-5" value="Save changes">
                 </form>  
             </div>
         </div>

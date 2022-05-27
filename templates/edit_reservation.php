@@ -16,15 +16,7 @@ $notifications=[];
 $errors=[];
 $warnings=[];
 
-if(isset($_GET['s'])){
-
-    // check if date is taken
-        // if yes, leave it but
-
-    // check num of people and table
-        // give a notification if not right
-    
-    
+if(isset($_POST['submit'])){
 
     // reservation table update
     updateMultipleSql($conn, RESER, array("reservationDatetime", "numOfPeople", "tableID"), array("'".$_POST['reservationDatetime']."'", "'".$_POST['numOfPeople']."'", $_POST['tableID']), "resID", $_GET['id']);
@@ -32,7 +24,6 @@ if(isset($_GET['s'])){
     $customerID = select_cond($conn, RESER, "resID=".$_GET['id'])[0]['customerID'];
     updateMultipleSql($conn, CUST, array("fullname", "email", "phone"), array("'".$_POST['fullname']."'", "'".$_POST['email']."'", "'".$_POST['phone']."'"), "customerID", $customerID);
     
-    echo "<script>window.location = './admin.php?page=editRes&id={$_GET['id']}'</script>";
     array_push($notifications, "Successfully updated!");
 }
 
@@ -48,24 +39,20 @@ if(!($free_tables = free_sql($conn, "SELECT * FROM tables WHERE tableID NOT IN (
     $disabled = "readonly";
 }
 
-$tableMax = select_cond($conn, $table, "tableID=".$tableID)[0]['maxPeople'];
-if($people>$tableMax){
+// check num of people and tableMax
+$tableMax = select_cond($conn, TABLES, "tableID=".$row['tableID'])[0]['maxPeople'];
+if($row['numOfPeople']>$tableMax){
     array_push($warnings, "Too many people for this table");
+}elseif (($tableMax-$row['numOfPeople'])>1) {
+    array_push($warnings, "Not enough people for this table, you should chose smaller table");
 }
-
 ?>
 
 <div class="content">
     <div class="py-4 col-xl-5 col-lg-8 col-md-12 px-3 px-md-4">
-    <?php
-        if(isset($notifications)){
-        ?>
-            <div class="alert alert-primary" role="alert">
-                <p>Successfully updated!</p>
-            </div>
-        <?php
-        }
-    ?>
+<?php
+        require_once("./informations.php");
+?>
         <div class="card">
             <div class="card-header">
                 <h4>Edit the reservation</h4>
@@ -113,7 +100,7 @@ if($people>$tableMax){
                         <input type="text" name="phone" class="form-control" value="<?php echo $row['phone'] ?>">
                     </div>
 
-                    <input type="submit" class="btn btn-info mt-5" value="Save changes">
+                    <input type="submit" name="submit" class="btn btn-info mt-5" value="Save changes">
                 </form>  
             </div>
         </div>

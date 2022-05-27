@@ -16,10 +16,10 @@ $notifications=[];
 $errors=[];
 $warnings=[];
 
-if(isset($_GET['u'])){
+if(isset($_POST['submitted'])){
     // reservation table update
     updateMultipleSql($conn, MENU, array("name", "description", "itemGroup", "price", "kcal"), array("'".$_POST['name']."'", "'".$_POST['description']."'", "'".$_POST['group']."'", $_POST['price'], $_POST['kcal']), "itemID", $_GET['id']);
-    echo "<script>window.location = './admin.php?page=editMenu&id={$_GET['id']}&s=1'</script>";
+    array_push($notifications, "Successfully updated!");
 }
 
 
@@ -37,19 +37,12 @@ switch ($row['itemGroup']) {
         $drp = '<option value="food" selected>food</option><option value="drink">drink</option>';
         break;
 }
-
 ?>
 
 <div class="content">
     <div class="py-4 col-xl-5 col-lg-8 col-md-12 px-3 px-md-4">
     <?php
-        if(isset($_GET['s'])){
-        ?>
-            <div class="alert alert-primary" role="alert">
-                <p>Successfully updated!</p>
-            </div>
-        <?php
-        }
+        require_once("./informations.php");
     ?>
     <div class="card">
             
@@ -57,7 +50,7 @@ switch ($row['itemGroup']) {
                 <h4>Edit the Menu</h4>
             </div>
             <div class="card-body pt-0">
-                <form action="admin.php?page=editMenu&id=<?php echo $_GET['id'] ?>&u=1" method="POST">
+                <form action="admin.php?page=editMenu&id=<?php echo $_GET['id'] ?>" method="POST">
                     
                     <div class="form-group">
                         <label>Item Name</label>
@@ -86,7 +79,7 @@ switch ($row['itemGroup']) {
                     </div>
                     
                     
-                    <input type="submit" class="btn btn-info mt-5" value="Save changes">
+                    <input type="submit" name="submitted" class="btn btn-info mt-5" value="Save changes">
                 </form>  
             </div>
         </div>
