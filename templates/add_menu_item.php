@@ -11,6 +11,13 @@ if(isset($_GET['newItem'])){
     insert($conn, MENU, "name, description, itemGroup, price, kcal", "'".$_POST['name']."', '".$_POST['description']."', '".$_POST['group']."', ".$_POST['price'].", ".$_POST['kcal']);
     echo "<script>window.location = './admin.php?page=addItem&s=1'</script>";
 }
+
+
+$notifications=[];
+$errors=[];
+$warnings=[];
+
+
 ?>
 
 <div class="content">

@@ -12,10 +12,13 @@ if(!isset($_GET['id']) || !id_exists($conn, MENU, "itemID", $_GET['id'])){
     die();
 }
 
+$notifications=[];
+$errors=[];
+$warnings=[];
+
 if(isset($_GET['u'])){
     // reservation table update
     updateMultipleSql($conn, MENU, array("name", "description", "itemGroup", "price", "kcal"), array("'".$_POST['name']."'", "'".$_POST['description']."'", "'".$_POST['group']."'", $_POST['price'], $_POST['kcal']), "itemID", $_GET['id']);
-    
     echo "<script>window.location = './admin.php?page=editMenu&id={$_GET['id']}&s=1'</script>";
 }
 
@@ -40,14 +43,14 @@ switch ($row['itemGroup']) {
 <div class="content">
     <div class="py-4 col-xl-5 col-lg-8 col-md-12 px-3 px-md-4">
     <?php
-                if(isset($_GET['s'])){
-                ?>
-                    <div class="alert alert-primary" role="alert">
-                        <p>Successfully updated!</p>
-                    </div>
-                <?php
-                }
-            ?>
+        if(isset($_GET['s'])){
+        ?>
+            <div class="alert alert-primary" role="alert">
+                <p>Successfully updated!</p>
+            </div>
+        <?php
+        }
+    ?>
     <div class="card">
             
                 <div class="card-header">

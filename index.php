@@ -6,8 +6,9 @@ require_once "./database/db_functions.php";
 
 $conn = create_conn();
 
-$errors= [];
-$notifications= [];
+$notifications=[];
+$errors=[];
+$warnings=[];
 
 if(isset($_POST['name'])){
 
