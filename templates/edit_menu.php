@@ -70,7 +70,7 @@ switch ($row['itemGroup']) {
                             <label>Group</label>
                             <select class="custom-select" name="group">
                                 <?php echo $drp ?>
-                        </select>
+                            </select>
                         </div>
                         <div class="form-group col-4">
                             <label>Price</label>
