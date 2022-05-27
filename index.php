@@ -20,6 +20,7 @@ if(isset($_POST['name'])){
 
     $usersCol = "fullname, email, phone";
     $usersVal = "'".$name."', '".$email."', '".$number."'";
+	// kad musterija ne postoji izbacuje undefined offset
 	if(!($customerID = select_cond($conn, CUST, "email='".$email."'")[0]['customerID'])){
 		insert($conn, CUST, $usersCol, $usersVal);
 		$customerID = get_last_id($conn, CUST, "customerID");
