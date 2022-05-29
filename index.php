@@ -135,7 +135,7 @@ if(count($errors)>0){
 		</div>
 		<div class="course-col">
 			<h3>Bogdan</h3>
-			<p>Ich heiße Caleta Ivkovic Bogdan uns bin am ...... geboren</p>
+			<p>Ich heiße Caleta Ivkovic Bogdan uns bin am 05.10.2000 geboren</p>
 		</div>
 	</div>
 </section>
