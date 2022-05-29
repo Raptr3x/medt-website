@@ -34,27 +34,27 @@ if(isset($_POST['submit'])){
                 <form action="admin.php?page=addItem&newItem=1" method="POST">
                     <div class="form-group">
                         <label>Item Name</label>
-                        <input type="text" name="name" class="form-control">
+                        <input type="text" name="name" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label>Item Description</label>
-                        <input type="textarea" name="description" class="form-control">
+                        <input type="textarea" name="description" class="form-control" required>
                     </div>
                     <div class="row">
                         <div class="form-group col-4">
                             <label>Group</label>
-                            <select class="custom-select" name="group">
+                            <select class="custom-select" name="group" required>
                                 <option value="food" selected>Food</option>
                                 <option value="drink">Drink</option>
                         </select>
                         </div>
                         <div class="form-group col-4">
                             <label>Price</label>
-                            <input type="number" step="any" name="price" class="form-control">
+                            <input type="number" step="any" name="price" class="form-control" required>
                         </div>
                         <div class="form-group col-4">
                             <label>KCAL</label>
-                            <input type="number" step="any" name="kcal" class="form-control">
+                            <input type="number" step="any" name="kcal" class="form-control" required>
                         </div>
                     </div>
                     

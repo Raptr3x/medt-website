@@ -63,18 +63,18 @@ if($row['numOfPeople']>$tableMax){
                     <div class="form-group mb-3">
                         <div class="input-section" style="width: 100%; max-width: 700px">
                             <label for="Datum" class="form-label required">Date and Time:</label>
-                            <input type="datetime-local" id="date-time-input" name="reservationDatetime" class="form-input w-100" value="<?php echo date("Y-m-d\TH:i:s", strtotime($row['reservationDatetime'])); ?>" >
+                            <input type="datetime-local" id="date-time-input" name="reservationDatetime" class="form-input w-100" value="<?php echo date("Y-m-d\TH:i:s", strtotime($row['reservationDatetime'])); ?>" required>
                         </div>
                     </div>
                     
                     <div class="row">
                         <div class="form-group col-6">
                             <label>Number of People</label>
-                            <input type="number" name="numOfPeople" class="form-control" value="<?php echo $row['numOfPeople'] ?>">
+                            <input type="number" name="numOfPeople" class="form-control" value="<?php echo $row['numOfPeople'] ?>" required>
                         </div>
                         <div class="form-group col-6">
                             <label>Table ID</label>
-                            <select class="custom-select" name="tableID" <?php echo $disabled; ?>>
+                            <select class="custom-select" name="tableID" <?php echo $disabled; ?> required>
                                 <option value="<?php echo $row['tableID']; ?>" selected><?php echo $row['tableID']; ?></option>
                                 <?php
                                 foreach ($free_tables as $key => $value) {  
@@ -89,15 +89,15 @@ if($row['numOfPeople']>$tableMax){
                     
                     <div class="form-group">
                         <label>Customer Name</label>
-                        <input type="text" name="fullname" class="form-control" value="<?php echo $row['fullname'] ?>">
+                        <input type="text" name="fullname" class="form-control" value="<?php echo $row['fullname'] ?>" required>
                     </div>
                     <div class="form-group">
                         <label>E-mail</label>
-                        <input type="text" name="email" class="form-control" value="<?php echo $row['email'] ?>">
+                        <input type="text" name="email" class="form-control" value="<?php echo $row['email'] ?>" required>
                     </div>
                     <div class="form-group">
                         <label>Phone</label>
-                        <input type="text" name="phone" class="form-control" value="<?php echo $row['phone'] ?>">
+                        <input type="text" name="phone" class="form-control" value="<?php echo $row['phone'] ?>" required>
                     </div>
 
                     <input type="submit" name="submit" class="btn btn-info mt-5" value="Save changes">
