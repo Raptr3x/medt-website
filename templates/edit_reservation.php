@@ -12,10 +12,11 @@ if(!isset($_GET['id']) || !id_exists($conn, RESER, "resID", $_GET['id'])){
     die();
 }
 
-if(isset($_GET['s'])){
+$notifications=[];
+$errors=[];
+$warnings=[];
 
-    // check if date is taken
-        // if yes, leave it but 
+if(isset($_POST['submit'])){
 
     // reservation table update
     updateMultipleSql($conn, RESER, array("reservationDatetime", "numOfPeople", "tableID"), array("'".$_POST['reservationDatetime']."'", "'".$_POST['numOfPeople']."'", $_POST['tableID']), "resID", $_GET['id']);
@@ -23,8 +24,7 @@ if(isset($_GET['s'])){
     $customerID = select_cond($conn, RESER, "resID=".$_GET['id'])[0]['customerID'];
     updateMultipleSql($conn, CUST, array("fullname", "email", "phone"), array("'".$_POST['fullname']."'", "'".$_POST['email']."'", "'".$_POST['phone']."'"), "customerID", $customerID);
     
-    echo "<script>window.location = './admin.php?page=editRes&id={$_GET['id']}'</script>";
-    array_push($notification, "Successfully updated!");
+    array_push($notifications, "Successfully updated!");
 }
 
 
@@ -39,10 +39,20 @@ if(!($free_tables = free_sql($conn, "SELECT * FROM tables WHERE tableID NOT IN (
     $disabled = "readonly";
 }
 
+// check num of people and tableMax
+$tableMax = select_cond($conn, TABLES, "tableID=".$row['tableID'])[0]['maxPeople'];
+if($row['numOfPeople']>$tableMax){
+    array_push($warnings, "Too many people for this table");
+}elseif (($tableMax-$row['numOfPeople'])>1) {
+    array_push($warnings, "Not enough people for this table, you should chose smaller table");
+}
 ?>
 
 <div class="content">
     <div class="py-4 col-xl-5 col-lg-8 col-md-12 px-3 px-md-4">
+<?php
+        require_once("./informations.php");
+?>
         <div class="card">
             <div class="card-header">
                 <h4>Edit the reservation</h4>
@@ -90,7 +100,7 @@ if(!($free_tables = free_sql($conn, "SELECT * FROM tables WHERE tableID NOT IN (
                         <input type="text" name="phone" class="form-control" value="<?php echo $row['phone'] ?>">
                     </div>
 
-                    <input type="submit" class="btn btn-info mt-5" value="Save changes">
+                    <input type="submit" name="submit" class="btn btn-info mt-5" value="Save changes">
                 </form>  
             </div>
         </div>

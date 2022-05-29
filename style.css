@@ -325,6 +325,13 @@ p{
   width: 20%;
 }
 
+.text-danger{
+  color: red;
+}
+.text-success{
+  color: #3AD66E;
+}
+
 /* bogdan end */
 .row{
     margin: 5%;

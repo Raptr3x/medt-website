@@ -4,9 +4,14 @@ require_once "./constants.php";
 
 $conn = create_conn();
 
-if(isset($_GET['remove_reservation_id'])){
-    updateSql($conn, RESER, "deleted", 1, "resID", $_GET['remove_reservation_id']);
-    echo "<script>window.location = './admin.php'</script>";
+
+$notifications=[];
+$errors=[];
+$warnings=[];
+
+if(isset($_POST['delete'])){
+    updateSql($conn, RESER, "deleted", 1, "resID", $_POST['id']);
+    array_push($notifications, "Successfully removed!");
 }
 ?>
 
@@ -17,6 +22,9 @@ if(isset($_GET['remove_reservation_id'])){
             </div>
             <div class="row">
                 <div class="col-12">
+                    <?php
+                        require_once("./informations.php");
+                    ?>
                     <div class="card mb-3 mb-md-4">
                         <div class="card-header">
                             <h5 class="font-weight-semi-bold mb-0">Recent Orders</h5>
@@ -39,22 +47,21 @@ if(isset($_GET['remove_reservation_id'])){
                                     </thead>
                                     <tbody>
 
-                                    <?php 
+<?php 
 
 $rows = free_sql($conn, "SELECT r.resID, r.reservationDatetime, r.numOfPeople, c.fullname, r.tableID, c.email, c.phone FROM ".RESER." r INNER JOIN ".CUST." c ON r.customerID = c.customerID WHERE r.deleted=0 order by r.reservationDatetime desc");
 
-// $rows = array_merge($rows, $rows_old);
 
 foreach ($rows as $row)
 {
     // start datetime (NEEDS TO BE FORMATED!!)        
-    $start_datetime = date_format(date_create($row['reservationDatetime']),"d F Y H:i:s");
+    $reservationDatetime = date_format(date_create($row['reservationDatetime']),"d F Y H:i:s");
 
     // mark past dates
     $past_date_classname = "";
-    $ride_date = date_format(date_create($row['reservationDatetime']),"Y-m-d H:i:s");
+    $date = date_format(date_create($row['reservationDatetime']),"Y-m-d H:i:s");
     $today = date("Y-m-d H:i:s");
-    if($ride_date<$today){
+    if($date<$today){
         $past_date_classname = "disabled";
     }
 
@@ -65,7 +72,7 @@ foreach ($rows as $row)
 ?>
             <tr class="<?php echo $past_date_classname ?>">
                 <td class="py-3"><?php echo $row['resID']; ?></td>
-                <td class="py-3"><?php echo $start_datetime; ?></td>
+                <td class="py-3"><?php echo $reservationDatetime; ?></td>
                 <td class="py-3"><?php echo $row['numOfPeople']; ?></td>
                 <td class="py-3"><?php echo $name; ?></td>
                 <td class="py-3"><?php echo $row['tableID']; ?></td>
@@ -81,7 +88,10 @@ foreach ($rows as $row)
 
                         <div class="dropdown-menu" aria-labelledby="dropdownPosition">
                             <a class="dropdown-item" href="admin.php?page=editRes&id=<?php echo $row['resID']; ?>">Edit</a>
-                            <a class="dropdown-item" href="admin.php?page=reservationen&remove_reservation_id=<?php echo $row['resID']; ?>" onclick="return  confirm('Are you really sure that you want to delete reservation for the table <?php echo $row['tableID']; ?> at <?php echo $combinedDT; ?> ?')">Delete</a>
+                            <form action="admin.php?page=reservationen" method="POST">
+                                <input name="id" value="<?php echo $row['resID']; ?>" hidden>
+                                <input type="submit" name="delete" class="dropdown-item" onclick="return  confirm('Are you really sure that you want to delete reservation for the table <?php echo $row['tableID']; ?> at <?php echo $reservationDatetime; ?> ?')" value="Delete" readonly>
+                            </form>
                         </div>
                     </div>
 
