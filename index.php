@@ -225,44 +225,50 @@ if(count($errors)>0){
 		}
 		?>
 		<div>
-			<span>Your full name ?</span>
-			<input type="text" name="name" id="name" placeholder="Write your name here..." required>
+			<!-- gornji red -->
+			<div>
+				<span>Your full name ?</span>
+				<input type="text" name="name" id="name" placeholder="Write your name here..." required>
+				<span>Your email address ?</span>
+				<input type="email" name="email" id="name" placeholder="Write your email here..." required> 
+			
+				<span>Your phone number ?</span>
+				<input type="number" name="number" id="number" placeholder="Write your number here..." required>
+			</div>
+			<!-- donji red -->
+			<div class="fuerReservation">
+				<!-- this is the select option--->
+				<div>
+					<span>How many people ?</span>
+				<select name="people" id="people" required>
+					<option value=""> <---People---></option>
+					<option value="1">1 People</option>
+					<option value="2">2 People</option>
+					<option value="3">3 People</option>
+					<option value="4">4 People</option>
+					<option value="4">5 People</option>
+					<option value="4">6 People</option>
+					<option value="4">7 People</option>
+					<option value="4">8 People</option>
+					<option value="4">9 People</option>
+				</select>
+				</div>
+				<!-- this is the select option--->
+			
+				<div>
+					<span>What time ?</span>
+					<input type="time" name="time" id="time"  min="10:00" max="23:00" required>
+				</div>
+			
+				<div>
+					<span>What is the date ?</span>
+					<input type="date" name="date" id="date" placeholder="date" required>
+				</div>
+			</div>
 		</div>
-		<div>
-			<span>Your email address ?</span>
-			<input type="email" name="email" id="name" placeholder="Write your email here..." required> 
-		</div>
-		<div>
-			<span>Your phone number ?</span>
-			<input type="number" name="number" id="number" placeholder="Write your number here..." required>
-		</div> 
-		<br> 
-		<div class="fuerReservation">
-			<!-- <---this is the select option--->
-			<span>How many people ?</span>
-			<select name="people" id="people" required>
-				<option value=""> <---People---></option>
-				<option value="1">1 People</option>
-				<option value="2">2 People</option>
-				<option value="3">3 People</option>
-				<option value="4">4 People</option>
-				<option value="4">5 People</option>
-				<option value="4">6 People</option>
-				<option value="4">7 People</option>
-				<option value="4">8 People</option>
-				<option value="4">9 People</option>
-			</select>
-			<!-- <---this is the select option--->
-		
-
-			<span>What time ?</span>
-			<input type="time" name="time" id="time"  min="10:00" max="23:00" required>
 		
 		
-			<span>What is the date ?</span>
-			<input type="date" name="date" id="date" placeholder="date" required>
 		
-	</div>
 	
 		<br>
 		<div id="submit">
@@ -308,7 +314,6 @@ if(count($errors)>0){
 	<!--contact section end-->
 	
 </section>
-
 <script src="main.js"></script>
 
 </body>
