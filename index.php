@@ -97,7 +97,6 @@ if(count($errors)>0){
 				</div>
 					<div class="btn">
 						<i class="fa fa-bars menu-btn"></i>
-						
 					</div>
 			
 
@@ -224,8 +223,6 @@ if(count($errors)>0){
 				echo "<p class='text-success'>".$notifications[$key]."</p>";
 			}
 		}
-		
-		
 		?>
 		<div>
 			<span>Your full name ?</span>
@@ -236,6 +233,11 @@ if(count($errors)>0){
 			<input type="email" name="email" id="name" placeholder="Write your email here..." required> 
 		</div>
 		<div>
+			<span>Your phone number ?</span>
+			<input type="number" name="number" id="number" placeholder="Write your number here..." required>
+		</div> 
+		<br> 
+		<div class="fuerReservation">
 			<!-- <---this is the select option--->
 			<span>How many people ?</span>
 			<select name="people" id="people" required>
@@ -251,19 +253,17 @@ if(count($errors)>0){
 				<option value="4">9 People</option>
 			</select>
 			<!-- <---this is the select option--->
-		</div>
-		<div>
+		
+
 			<span>What time ?</span>
 			<input type="time" name="time" id="time"  min="10:00" max="23:00" required>
-		</div>
-		<div>
+		
+		
 			<span>What is the date ?</span>
 			<input type="date" name="date" id="date" placeholder="date" required>
-		</div>
-		<div>
-			<span>Your phone number ?</span>
-			<input type="number" name="number" id="number" placeholder="Write your number here..." required>
-		</div> 
+		
+	</div>
+	
 		<br>
 		<div id="submit">
 			<input type="submit" value="SUBMIT" id="submit">
