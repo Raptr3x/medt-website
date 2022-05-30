@@ -996,9 +996,9 @@ h3{
 
 #reserve .fuerReservation {
     
-  display: flex;
-	flex-direction: row;
-	
+  display :inline;
+  flex-direction: column;
+
 }
 
 #submit{
