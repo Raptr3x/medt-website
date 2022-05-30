@@ -239,8 +239,10 @@ if(count($errors)>0){
 		<br> 
 		<div class="fuerReservation">
 			<!-- <---this is the select option--->
-			<span>How many people ?</span>
-			<select name="people" id="people" required>
+				<div>
+					<div> <span>How many people ?</span></div>
+
+				<select name="people" id="people" required>
 				<option value=""> <---People---></option>
 				<option value="1">1 People</option>
 				<option value="2">2 People</option>
@@ -251,16 +253,21 @@ if(count($errors)>0){
 				<option value="4">7 People</option>
 				<option value="4">8 People</option>
 				<option value="4">9 People</option>
-			</select>
+			</select> 
+			</div>
+			
 			<!-- <---this is the select option--->
-		
+			<div><span>What time ?</span>
 
-			<span>What time ?</span>
-			<input type="time" name="time" id="time"  min="10:00" max="23:00" required>
+			 <input type="time" name="time" id="time"  min="10:00" max="23:00" required> 
+		</div>
+			
+			
 		
-		
-			<span>What is the date ?</span>
+		<div> <span>What is the date ?</span>
 			<input type="date" name="date" id="date" placeholder="date" required>
+		</div>
+			
 		
 	</div>
 	
