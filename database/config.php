@@ -8,16 +8,16 @@ global $servername, $username, $password, $dbname;
 
 
 // // local
-//  $servername = "127.0.0.1";
-//  $username = "root";
-//  $password = "";
-//  $dbname = "lunibo";
+ $servername = "127.0.0.1";
+ $username = "root";
+ $password = "";
+ $dbname = "lunibo";
 
 // raspberry
-$servername = "192.168.0.220";
-$username = "pi";
-$password = "raspberry";
-$dbname = "lunibo";
+// $servername = "192.168.0.220";
+// $username = "pi";
+// $password = "raspberry";
+// $dbname = "lunibo";
 // if($sub=="www"){
 //     // hosting
 //     $servername = "localhost";

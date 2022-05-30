@@ -225,12 +225,9 @@ if(count($errors)>0){
 		}
 		?>
 		<div>
-			<!-- gornji red -->
-			<div>
-				<span>Your full name ?</span>
-				<input type="text" name="name" id="name" placeholder="Write your name here..." required>
-			</div>
-		
+			<span>Your full name ?</span>
+			<input type="text" name="name" id="name" placeholder="Write your name here..." required>
+		</div>
 		<div>
 			<span>Your email address ?</span>
 			<input type="email" name="email" id="name" placeholder="Write your email here..." required> 
@@ -272,6 +269,7 @@ if(count($errors)>0){
 		</div>
 			
 		
+	</div>
 	
 		<br>
 		<div id="submit">
@@ -317,6 +315,7 @@ if(count($errors)>0){
 	<!--contact section end-->
 	
 </section>
+
 <script src="main.js"></script>
 
 </body>
