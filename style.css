@@ -364,6 +364,7 @@ h3{
     flex-direction :column ;
     align-items: center;
 justify-content: center;
+margin-top: -2%;
 }
 h1{
   color: rgb(230, 221, 230);
@@ -375,7 +376,7 @@ h1{
 flex-basis: 31%;
 background: rgba(196, 193, 193, 0.24);
 border-radius: 10px;
-margin-bottom: -10%;
+margin-bottom: 10%;
 padding: 15px 9px ;
 box-sizing: border-box;
 transition: 0.5s;
@@ -386,7 +387,7 @@ width: 800px;
 
 p{
 color: rgb(230, 221, 230);
-font-size: 12px;
+font-size: 18px;
 font-size: 600;
 
 }
@@ -416,7 +417,7 @@ font-size: 600;
 
 p{
 color: rgb(230, 221, 230);
-font-size: 12px;
+font-size: 14px;
 font-size: 600;
 
 }
@@ -474,7 +475,7 @@ justify-content: center;
 
 p{
 color: rgb(230, 221, 230);
-font-size: 10px;
+font-size: 12px;
 font-size: 600;
 
 }
