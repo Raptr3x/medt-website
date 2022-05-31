@@ -464,7 +464,7 @@ h1{
 flex-basis: 31%;
 background: rgba(196, 193, 193, 0.24);
 border-radius: 20px;
-margin-bottom: 10%;
+margin : 5%;
 padding: 8px 4px ;
 box-sizing: border-box;
 transition: 0.5s;
