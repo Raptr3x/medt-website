@@ -48,8 +48,8 @@ if(isset($_POST['name'])){
 
 
 
-$foods = select_cond($conn, MENU, "itemGroup='food'");
-$drinks = select_cond($conn, MENU, "itemGroup='drink'");
+$foods = select_cond($conn, MENU, "itemGroup='food' AND deleted=0");
+$drinks = select_cond($conn, MENU, "itemGroup='drink' AND deleted=0");
 
 
 ?>

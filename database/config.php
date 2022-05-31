@@ -14,10 +14,19 @@ global $servername, $username, $password, $dbname;
 //  $dbname = "lunibo";
 
 // raspberry
-$servername = "192.168.0.220";
-$username = "pi";
-$password = "raspberry";
-$dbname = "lunibo";
+// $servername = "192.168.0.220";
+// $username = "pi";
+// $password = "raspberry";
+// $dbname = "lunibo";
+
+
+// remote db
+$servername = "e116549-phpmyadmin.services.easyname.eu";
+$username = "u180980db3";
+$password = "8j6n9dsm55f";
+$dbname = "u180980db3";
+
+
 // if($sub=="www"){
 //     // hosting
 //     $servername = "localhost";

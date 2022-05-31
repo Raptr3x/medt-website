@@ -3,7 +3,7 @@
 define("TEMPLATES", "./templates");
 define("NOTIFICATIONS", TEMPLATES."/notifications");
 
-define("VERSION", "v0.0.1");
+define("VERSION", "v1.0.1");
 
 define("ASSETS", ".");
 define("CSS", ASSETS."/css");
