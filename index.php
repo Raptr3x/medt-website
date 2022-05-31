@@ -130,7 +130,10 @@ if(count($errors)>0){
 		</div>
 		<div class="course-col">
 			<h3>Nikola</h3>
-			<p>Mein Name lautet Panic Nikola ich bin am 17.09.1999 geboren </p>
+			<p>Ich heiße Panic Nikola und bin am 17.09.1999 geboren, in diesem Projekt was unsere Abschlussarbeit ist 
+				war es meine Aufgabe die Webseite zu erstellen. 
+				Dies habe ich mithilfe von HTML, CSS und JavaScript umgesetzt 
+				und diese Webseite auf der Sie sich gerade befinden programmiert. </p>
 		</div>
 		<div class="course-col">
 			<h3>Bogdan</h3>
