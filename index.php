@@ -109,7 +109,7 @@ if(count($errors)>0){
 		<p>
 			Ja richtig gehört wir sind das weltbeste Restaurant
 		</p>
-		<a href="#reserve" class="hero-btn">Komm und ueberzeuge dich !</a>
+		<a href="#reserve" class="hero-btn">Komm und überzeug dich !</a>
 		
 	
 	</div>
@@ -126,18 +126,22 @@ if(count($errors)>0){
 	<div class="row">
 		<div class="course-col">
 			<h3>Lukas</h3>
-			<p>Ich heiße Zankel Lukas und bin am ..... geboren</p>
+			<p>Mein Name ist Lukas Zankel und bei unserer Diplomarbeit kümmere ich mich hauptsächlich um die 
+				technischen Voraussetzungen sowie das Design. Also schauen das unsere Website erreichbar ist und die Grafiken s
+				owie das Erscheinungsbild ansprechend. DNS records, WINSCP aber auch Photoshop sind einige Dinge mit denen ich mich beschäftige.</p>
 		</div>
 		<div class="course-col">
 			<h3>Nikola</h3>
-			<p>Ich heiße Panic Nikola und bin am 17.09.1999 geboren, in diesem Projekt was unsere Abschlussarbeit ist 
+			<p>Ich heiße Panic Nikola und in diesem Projekt, das unsere Diplomarbeit ist, 
 				war es meine Aufgabe die Webseite zu erstellen. 
 				Dies habe ich mithilfe von HTML, CSS und JavaScript umgesetzt 
 				und diese Webseite auf der Sie sich gerade befinden programmiert. </p>
 		</div>
 		<div class="course-col">
 			<h3>Bogdan</h3>
-			<p>Ich heiße Caleta Ivkovic Bogdan uns bin am 05.10.2000 geboren</p>
+			<p>Mein Name ist Bogdan Caleta Ivkovic und in diesem Projekt, das unsere Abschlussarbeit ist, 
+				war es meine Aufgabe, das Backend der Website, die Datenbank und das Dashboard zu erstellen. 
+				Ich habe dies mit PHP, MySQL und JavaScript implementiert.</p>
 		</div>
 	</div>
 </section>

@@ -436,7 +436,19 @@ font-weight: 600;
 margin: 10px 0 ;
 }
 
-@media(max-width: 500px){
+@media(max-width: 600px){
+  #about{
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding-top: 100px ;
+    
+    background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)), url(images/About.png);
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    width: 100%;
+  }
 .row{
     flex-direction: column;
     
@@ -445,14 +457,14 @@ h1{
   color: rgb(230, 221, 230);
   font-size: 25px;
   font-size: 300;
-  margin-top: -15%;
+  margin-top: -35%;
 }
 .course-col{
 flex-basis: 31%;
 background: rgba(196, 193, 193, 0.24);
 border-radius: 20px;
 margin-bottom: 10%;
-padding: 20px 13px ;
+padding: 8px 4px ;
 box-sizing: border-box;
 transition: 0.5s;
 justify-content: center;
@@ -462,7 +474,7 @@ justify-content: center;
 
 p{
 color: rgb(230, 221, 230);
-font-size: 12px;
+font-size: 10px;
 font-size: 600;
 
 }
@@ -1050,9 +1062,11 @@ input[type=number] {
 @media screen and (max-width:710px) {
 .main-form{
     text-align: center;
-    
 }
 }
+
+
+
 
 
 @media screen and (max-width:710px) {
