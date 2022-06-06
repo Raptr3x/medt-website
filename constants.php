@@ -2,25 +2,17 @@
 
 define("TEMPLATES", "./templates");
 define("NOTIFICATIONS", TEMPLATES."/notifications");
+define("DATABASE", "./database");
 
 define("VERSION", "v1.0.1");
 
-define("ASSETS", ".");
+define("ASSETS", "./assets");
 define("CSS", ASSETS."/css");
 define("JS", ASSETS."/js");
 define("IMGS", ASSETS."/imgs");
 define("UI", ASSETS."/graindashboard");
 define("UI_CSS", UI."/css");
 define("UI_JS", UI."/js");
-
-// Check if dev or not
-    $sub = explode(".", $_SERVER['HTTP_HOST'])[0];
-    if($sub!="www"){
-        define("DBPREFIX", "");
-    }
-    else{
-        define("DBPREFIX", "dev_");
-    }
 
 //tables
 define("RESER", DBPREFIX."reservations");

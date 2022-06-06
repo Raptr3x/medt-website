@@ -1,5 +1,5 @@
 <?php
-require_once("./database/db_functions.php");
+require_once(DATABASE."/db_functions.php");
 require_once "./constants.php";
 
 $conn = create_conn();
