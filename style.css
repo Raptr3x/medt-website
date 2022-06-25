@@ -18,7 +18,7 @@ a{
   position: relative;
   min-height: 100vh;
   width: 100%;
-   background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)), url(assets/images/Bild.png);
+   background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)), url(images/Bild.png);
    background-position: center no-repeat;
    background-size: cover;
    display: flex;
@@ -289,7 +289,7 @@ letter-spacing: 2px;
   text-align: center;
   padding-top: 200px ;
   
-  background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)), url(assets/images/About.png);
+  background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)), url(images/About.png);
   background-position: center;
   background-size: cover;
   position: relative;
@@ -444,7 +444,7 @@ margin: 10px 0 ;
     text-align: center;
     padding-top: 100px ;
     
-    background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)), url(assets/images/About.png);
+    background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)), url(images/About.png);
     background-position: center;
     background-size: cover;
     position: relative;
@@ -496,7 +496,7 @@ font-size: 18px;
   text-align: center;
   padding-top: 100px ;
 
-  background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)), url(assets/images/menu1.jpg);
+  background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)), url(images/menu1.jpg);
   background-position: center;
   background-size: cover;
   position: relative;
@@ -915,7 +915,7 @@ h1{
   text-align: center;
   padding-top: 200px ;
 
-  background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)), url(assets/images/reserve.jpg);
+  background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)), url(images/reserve.jpg);
   background-position: center;
   background-size: cover;
   position: relative;
@@ -1134,7 +1134,7 @@ background-color: rgba(230, 221, 230, 0.082);
   text-align: center;
   padding-top: 200px ;
 
-  background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)), url(assets/images/reserve.jpg);
+  background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)), url(images/reserve.jpg);
   background-position: center;
   background-size: cover;
   position: relative;
