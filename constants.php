@@ -6,6 +6,9 @@ define("DATABASE", "./database");
 
 define("VERSION", "v1.0.1");
 
+define("DBPREFIX", "");
+
+
 define("ASSETS", "./assets");
 define("CSS", ASSETS."/css");
 define("JS", ASSETS."/js");
