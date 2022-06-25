@@ -1,7 +1,7 @@
 <?php
 require_once "./functions.php";
 require_once "./constants.php";
-require_once DATABASE."/db_functions.php";
+require_once "./database/db_functions.php";
 
 
 $conn = create_conn();
@@ -18,6 +18,7 @@ if(isset($_POST['name'])){
     $email = strtolower(sanitize_user_input_text($_POST['email']));
     $number = filter_var($_POST['number'], FILTER_SANITIZE_NUMBER_INT);
     $people = filter_var($_POST['people'], FILTER_SANITIZE_NUMBER_INT);
+	$key = bin2hex(random_bytes(32));
 
 
     $usersCol = "fullname, email, phone";
@@ -38,8 +39,8 @@ if(isset($_POST['name'])){
 		array_push($errors, "Unfortinately there are no free tables at the moment for the selected date.\nPlease select another one.");
 	}else{
 		$tableID = $tableID[0]['tableID'];
-		$resCol = "reservationDatetime, numOfPeople, tableID, customerID";
-		$resVal = "'".$combinedDT."', ".$people.", ".$tableID.", ".$customerID."";
+		$resCol = "reservationDatetime, numOfPeople, tableID, customerID, key";
+		$resVal = "'".$combinedDT."', ".$people.", ".$tableID.", ".$customerID.", '".$key."'";
 		insert($conn, RESER, $resCol, $resVal);
 		array_push($notifications, "Your reservation has been successfully created! Thank you very much!");
 	}
@@ -57,7 +58,7 @@ $drinks = select_cond($conn, MENU, "itemGroup='drink' AND deleted=0");
 <html>
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title> LuNiBo </title>
+		<title> Test </title>
 		<link rel="stylesheet" href="/css/all.css">
 		<link rel="stylesheet" href="/css/fontawesome.css">
 		<link rel="stylesheet" href="style.css">

@@ -1,5 +1,8 @@
 <?php
 
+// $sub = explode(".", $_SERVER['HTTP_HOST'])[0];
+// echo $sub;
+
 global $servername, $username, $password, $dbname;
 
 $dev_env = 'remote';
