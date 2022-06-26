@@ -14,7 +14,7 @@ if(isset($_POST['name'])){
 
 
     $name = strtolower(sanitize_user_input_text($_POST['name']));
-    $combinedDT = date('Y-m-d H:i:s', strtotime($_POST['date'].", ".$_POST['time']));
+    $combinedDT = date('Y-m-d H:i', strtotime($_POST['date'].", ".$_POST['time']));
     $email = strtolower(sanitize_user_input_text($_POST['email']));
     $number = filter_var($_POST['number'], FILTER_SANITIZE_NUMBER_INT);
     $people = filter_var($_POST['people'], FILTER_SANITIZE_NUMBER_INT);
@@ -43,6 +43,9 @@ if(isset($_POST['name'])){
 		$resVal = "'".$combinedDT."', ".$people.", ".$tableID.", ".$customerID.", '".$key."'";
 		insert($conn, RESER, $resCol, $resVal);
 		array_push($notifications, "Your reservation has been successfully created! Thank you very much!");
+		$datetime = date('d F Y H:i', strtotime($_POST['date'].", ".$_POST['time']));
+
+		email_confirmation($email, $name, $people, $datetime, $tableID, $number);
 	}
 }
 

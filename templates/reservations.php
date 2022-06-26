@@ -55,7 +55,7 @@ $rows = free_sql($conn, "SELECT r.resID, r.reservationDatetime, r.numOfPeople, c
 foreach ($rows as $row)
 {
     // start datetime (NEEDS TO BE FORMATED!!)        
-    $reservationDatetime = date_format(date_create($row['reservationDatetime']),"d F Y H:i:s");
+    $reservationDatetime = date_format(date_create($row['reservationDatetime']),"d F Y H:i");
 
     // mark past dates
     $past_date_classname = "";
