@@ -89,7 +89,7 @@ function send_email($mailtext, $to, $betreff){
 
 function email_confirmation($to, $name, $people, $datetime, $table, $phone, $key){
     
-    $url = "http://lunibo.wdev-solutions.com/customer_res_edit.php?key=".$key;
+    $url = "http://lunibo.wdev-solutions.com/edit_reservation.php?key=".$key;
     $mailtext = '
     <!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
     <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
@@ -362,7 +362,7 @@ function email_confirmation($to, $name, $people, $datetime, $table, $phone, $key
             <td style="overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:arial,helvetica,sans-serif;" align="left">
                 
         <h1 class="v-color" style="margin: 0px; color: #ffffff; line-height: 140%; text-align: center; word-wrap: break-word; font-weight: normal; font-family: arial,helvetica,sans-serif; font-size: 19px;">
-            <strong>E-mail</strong><br /><em style="color: #fadd7e";>'.$to.'</em>
+            <strong>E-mail</strong><br /><em style="color: #fadd7e !important";>'.$to.'</em>
         </h1>
         
             </td>

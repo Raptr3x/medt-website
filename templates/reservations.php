@@ -70,7 +70,7 @@ foreach ($rows as $row)
     $tel = $row['phone'];
   
 ?>
-                <tr class="<?php echo $past_date_classname ?>" onclick="location.href='admin.php?page=editRes&id=<?php echo $row['resID']; ?>'" style="cursor: pointer;">
+                <tr class="<?php echo $past_date_classname ?>">
                     <td class="py-3"><?php echo $row['resID']; ?></td>
                     <td class="py-3"><?php echo $reservationDatetime; ?></td>
                     <td class="py-3"><?php echo $row['numOfPeople']; ?></td>

@@ -81,12 +81,12 @@ $row = free_sql($conn, "SELECT r.resID, r.reservationDatetime, r.numOfPeople, c.
                 <h4>Edit the reservation</h4>
             </div>
             <div class="card-body pt-0">
-                <form action="customer_res_edit.php?key=<?php echo $_GET['key'] ?>" method="POST">
+                <form action="edit_reservation.php?key=<?php echo $_GET['key'] ?>" method="POST">
                     
                     <div class="row">
                         <div class="form-group col-6">
                             <label>Number of People</label>
-                            <input type="number" name="numOfPeople" class="form-control" value="<?php echo $row['numOfPeople'] ?>" max=10 required>
+                            <input type="number" name="numOfPeople" class="form-control" value="<?php echo $row['numOfPeople'] ?>" min=1 max=10 required>
                         </div>
                         <div class="form-group col-6">
                             <label>Date and Time:</label>
@@ -108,7 +108,7 @@ $row = free_sql($conn, "SELECT r.resID, r.reservationDatetime, r.numOfPeople, c.
                     </div>
 
                     <input type="submit" name="submit" class="btn btn-info mt-5" value="Save changes">
-                    <form action="customer_res_edit.php?key=<?php echo $_GET['key'] ?>" method="post"><input type="submit" name="delete" class="btn btn-danger mt-5 ml-5" value="Delete reservation" 
+                    <form action="edit_reservation.php?key=<?php echo $_GET['key'] ?>" method="post"><input type="submit" name="delete" class="btn btn-danger mt-5 ml-5" value="Delete reservation" 
                     onclick="return confirm('Are you really sure that you want to delete your reservation?')"></form>
                 </form>
             </div>
