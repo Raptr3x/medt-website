@@ -46,6 +46,7 @@ if(isset($_POST['delete'])){
                                     </tr>
                                     </thead>
                                     <tbody>
+
 <?php 
 
 $rows = free_sql($conn, "SELECT r.resID, r.reservationDatetime, r.numOfPeople, c.fullname, r.tableID, c.email, c.phone FROM ".RESER." r INNER JOIN ".CUST." c ON r.customerID = c.customerID WHERE r.deleted=0 order by r.reservationDatetime desc");
@@ -69,33 +70,32 @@ foreach ($rows as $row)
     $tel = $row['phone'];
   
 ?>
-            <tr class="<?php echo $past_date_classname ?>">
-                <td class="py-3"><?php echo $row['resID']; ?></td>
-                <td class="py-3"><?php echo $reservationDatetime; ?></td>
-                <td class="py-3"><?php echo $row['numOfPeople']; ?></td>
-                <td class="py-3"><?php echo $name; ?></td>
-                <td class="py-3"><?php echo $row['tableID']; ?></td>
-                <td class="py-3"><?php echo $row['email']; ?></td>
-                <td class="py-3"><?php echo "<a href='tel:".$tel."'>".$tel."</a>" ?></td>
+                <tr class="<?php echo $past_date_classname ?>" onclick="location.href='admin.php?page=editRes&id=<?php echo $row['resID']; ?>'" style="cursor: pointer;">
+                    <td class="py-3"><?php echo $row['resID']; ?></td>
+                    <td class="py-3"><?php echo $reservationDatetime; ?></td>
+                    <td class="py-3"><?php echo $row['numOfPeople']; ?></td>
+                    <td class="py-3"><?php echo $name; ?></td>
+                    <td class="py-3"><?php echo $row['tableID']; ?></td>
+                    <td class="py-3"><?php echo "<a href='tel:".$row['email']."'>".$row['email']."</a>"; ?></td>
+                    <td class="py-3"><?php echo "<a href='tel:".$tel."'>".$tel."</a>"; ?></td>
 
-                <td class="py-3">
-                    <div class="dropdown">
-                        <a id="dropdownPosition" class="dropdown-toggle" href="#" aria-haspopup="true" aria-expanded="false"
-                        data-toggle="dropdown">
-                            <i class="gd-more-alt icon-text icon-text-xs align-middle ml-3"></i>
-                        </a>
+                    <td class="py-3">
+                        <div class="dropdown">
+                            <a id="dropdownPosition" class="dropdown-toggle" href="#" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown">
+                                <i class="gd-more-alt icon-text icon-text-xs align-middle ml-3"></i>
+                            </a>
 
-                        <div class="dropdown-menu" aria-labelledby="dropdownPosition">
-                            <a class="dropdown-item" href="admin.php?page=editRes&id=<?php echo $row['resID']; ?>">Edit</a>
-                            <form action="admin.php?page=reservationen" method="POST">
-                                <input name="id" value="<?php echo $row['resID']; ?>" hidden>
-                                <input type="submit" name="delete" class="dropdown-item" onclick="return  confirm('Are you really sure that you want to delete reservation for the table <?php echo $row['tableID']; ?> at <?php echo $reservationDatetime; ?> ?')" value="Delete" readonly>
-                            </form>
+                            <div class="dropdown-menu" aria-labelledby="dropdownPosition">
+                                <a class="dropdown-item" href="admin.php?page=editRes&id=<?php echo $row['resID']; ?>">Edit</a>
+                                <form action="admin.php?page=reservationen" method="POST">
+                                    <input name="id" value="<?php echo $row['resID']; ?>" hidden>
+                                    <input type="submit" name="delete" class="dropdown-item" onclick="return  confirm('Are you really sure that you want to delete reservation for the table <?php echo $row['tableID']; ?> at <?php echo $reservationDatetime; ?> ?')" value="Delete" readonly>
+                                </form>
+                            </div>
                         </div>
-                    </div>
 
-                </td>
-            </tr>
+                    </td>
+                </tr>
 <?php } ?>
 </tbody>
 </table>
