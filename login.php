@@ -40,7 +40,7 @@ if (isset($_POST['login_btn'])) {
 				header('location: admin.php');
 			}
 		}
- }
+ 	}
 }
 
 ?>

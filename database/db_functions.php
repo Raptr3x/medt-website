@@ -115,11 +115,23 @@ function select_count_sum($conn, $operation, $table, $var, $after_where){
 }
 
 function id_exists($conn, $table, $id, $id_value){
-    $sql = "SELECT {$id} FROM {$table} WHERE {$id}={$id_value}";
+    $sql = "SELECT {$id} FROM {$table} WHERE {$id}='{$id_value}'";
     echoIt($sql);
     
     $stmt = $conn->query($sql);
     if(count($stmt->fetchAll())>0){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+function is_deleted($conn, $table, $id, $id_value){
+    $sql = "SELECT deleted FROM {$table} WHERE {$id}='{$id_value}'";
+    echoIt($sql);
+    
+    $stmt = $conn->query($sql);
+    if($stmt->fetchAll()[0]['deleted']==1){
         return true;
     }else{
         return false;
