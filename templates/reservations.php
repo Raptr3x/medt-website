@@ -46,7 +46,6 @@ if(isset($_POST['delete'])){
                                     </tr>
                                     </thead>
                                     <tbody>
-
 <?php 
 
 $rows = free_sql($conn, "SELECT r.resID, r.reservationDatetime, r.numOfPeople, c.fullname, r.tableID, c.email, c.phone FROM ".RESER." r INNER JOIN ".CUST." c ON r.customerID = c.customerID WHERE r.deleted=0 order by r.reservationDatetime desc");

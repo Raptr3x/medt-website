@@ -72,38 +72,41 @@ function isActive($page, $class='active'){
 
 function send_email($mailtext, $to, $betreff){
         
-    $absender   = "office@lunibo.at";
+    $absender   = "lunibo@wdev-solutions.com";
+    $respondto  = "office@wdev-solutions.com";
 
-    $header  = "MIME-Version: 1.0\r\n";
-    $header .= "Content-type: text/html; charset=utf-8\r\n";
+    $header = "MIME-Version: 1.0\r\n";
+    $header .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
     $header .= "From: $absender\r\n";
-    $header .= "Reply-To: $absender\r\n";
+    $header .= "Reply-To: $respondto\r\n";
     $header .= "X-Mailer: PHP ". phpversion();
 
 
     mail($to, $betreff, $mailtext, $header);
-    echo $mailtext;
+    // echo $mailtext;
 }
 
-function email_confirmation($to, $name, $people, $datetime, $table, $phone){
-
-    $mailtext = `<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-        <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
-        <head>
-        <!--[if gte mso 9]>
-        <xml>
-        <o:OfficeDocumentSettings>
-            <o:AllowPNG/>
-            <o:PixelsPerInch>96</o:PixelsPerInch>
-        </o:OfficeDocumentSettings>
-        </xml>
-        <![endif]-->
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="x-apple-disable-message-reformatting">
-        <!--[if !mso]><!--><meta http-equiv="X-UA-Compatible" content="IE=edge"><!--<![endif]-->
-        <title></title>
+function email_confirmation($to, $name, $people, $datetime, $table, $phone, $key){
+    
+    $url = "http://lunibo.wdev-solutions.com/customer_res_edit.php?key=".$key;
+    $mailtext = '
+    <!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+    <head>
+    <!--[if gte mso 9]>
+    <xml>
+    <o:OfficeDocumentSettings>
+        <o:AllowPNG/>
+        <o:PixelsPerInch>96</o:PixelsPerInch>
+    </o:OfficeDocumentSettings>
+    </xml>
+    <![endif]-->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="x-apple-disable-message-reformatting">
+    <!--[if !mso]><!--><meta http-equiv="X-UA-Compatible" content="IE=edge"><!--<![endif]-->
+    <title></title>
         
             <style type="text/css">
             @media only screen and (min-width: 620px) {
@@ -170,7 +173,7 @@ function email_confirmation($to, $name, $people, $datetime, $table, $phone){
         line-height: inherit;
         }
         
-        a[x-apple-data-detectors='true'] {
+        a[x-apple-data-detectors=\'true\'] {
         color: inherit !important;
         text-decoration: none !important;
         }
@@ -196,8 +199,8 @@ function email_confirmation($to, $name, $people, $datetime, $table, $phone){
         
         <div class="u-row-container" style="padding: 0px;background-color: transparent">
         <div class="u-row" style="Margin: 0 auto;min-width: 320px;max-width: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: transparent;">
-            <div style="border-collapse: collapse;display: table;width: 100%;background-image: url('images/image-5.jpeg');background-repeat: no-repeat;background-position: center top;background-color: transparent;">
-            <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding: 0px;background-color: transparent;" align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:600px;"><tr style="background-image: url('images/image-5.jpeg');background-repeat: no-repeat;background-position: center top;background-color: transparent;"><![endif]-->
+            <div style="border-collapse: collapse;display: table;width: 100%;background-image: url(\'http://lunibo.wdev-solutions.com/images/image-5.jpeg\');background-repeat: no-repeat;background-position: center top;background-color: transparent;">
+            <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding: 0px;background-color: transparent;" align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:600px;"><tr style="background-image: url(\'http://lunibo.wdev-solutions.com/images/image-5.jpeg\');background-repeat: no-repeat;background-position: center top;background-color: transparent;"><![endif]-->
             
         <!--[if (mso)|(IE)]><td align="center" width="600" class="v-col-background-color" style="width: 600px;padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;" valign="top"><![endif]-->
         <div class="u-col u-col-100" style="max-width: 320px;min-width: 600px;display: table-cell;vertical-align: top;">
@@ -266,8 +269,8 @@ function email_confirmation($to, $name, $people, $datetime, $table, $phone){
         
         <div class="u-row-container" style="padding: 0px;background-color: transparent">
         <div class="u-row" style="Margin: 0 auto;min-width: 320px;max-width: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: transparent;">
-            <div style="border-collapse: collapse;display: table;width: 100%;background-image: url('images/image-4.png');background-repeat: no-repeat;background-position: center top;background-color: transparent;">
-            <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding: 0px;background-color: transparent;" align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:600px;"><tr style="background-image: url('images/image-4.png');background-repeat: no-repeat;background-position: center top;background-color: transparent;"><![endif]-->
+            <div style="border-collapse: collapse;display: table;width: 100%;background-image: url(\'http://lunibo.wdev-solutions.com/images/image-4.png\');background-repeat: no-repeat;background-position: center top;background-color: transparent;">
+            <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding: 0px;background-color: transparent;" align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:600px;"><tr style="background-image: url(\'http://lunibo.wdev-solutions.com/images/image-4.png\');background-repeat: no-repeat;background-position: center top;background-color: transparent;"><![endif]-->
             
         <!--[if (mso)|(IE)]><td align="center" width="300" class="v-col-background-color" style="background-color: #000000;width: 300px;padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;" valign="top"><![endif]-->
         <div id="u_column_1" class="u-col u-col-50" style="max-width: 320px;min-width: 300px;display: table-cell;vertical-align: top;">
@@ -280,7 +283,7 @@ function email_confirmation($to, $name, $people, $datetime, $table, $phone){
             <td style="overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:arial,helvetica,sans-serif;" align="left">
                 
         <h1 class="v-color" style="margin: 0px; color: #ffffff; line-height: 140%; text-align: center; word-wrap: break-word; font-weight: normal; font-family: arial,helvetica,sans-serif; font-size: 19px;">
-            <strong>Name</strong><br /><em style="color: #fadd7e";>{$name}</em>
+            <strong>Name</strong><br /><em style="color: #fadd7e";>'.$name.'</em>
         </h1>
         
             </td>
@@ -294,7 +297,7 @@ function email_confirmation($to, $name, $people, $datetime, $table, $phone){
             <td style="overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:arial,helvetica,sans-serif;" align="left">
                 
         <h1 class="v-color" style="margin: 0px; color: #ffffff; line-height: 140%; text-align: center; word-wrap: break-word; font-weight: normal; font-family: arial,helvetica,sans-serif; font-size: 19px;">
-            <strong>Date and time</strong><br /><em style="color: #fadd7e";>{$datetime}</em>
+            <strong>Date and time</strong><br /><em style="color: #fadd7e";>'.$datetime.'</em>
         </h1>
         
             </td>
@@ -308,7 +311,7 @@ function email_confirmation($to, $name, $people, $datetime, $table, $phone){
             <td style="overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:arial,helvetica,sans-serif;" align="left">
                 
         <h1 class="v-color" style="margin: 0px; color: #ffffff; line-height: 140%; text-align: center; word-wrap: break-word; font-weight: normal; font-family: arial,helvetica,sans-serif; font-size: 19px;">
-            <strong>Phone</strong><br /><em style="color: #fadd7e";>{$phone}</em>
+            <strong>Phone</strong><br /><em style="color: #fadd7e";>'.$phone.'</em>
         </h1>
         
             </td>
@@ -331,7 +334,7 @@ function email_confirmation($to, $name, $people, $datetime, $table, $phone){
             <td style="overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:arial,helvetica,sans-serif;" align="left">
                 
         <h1 class="v-color" style="margin: 0px; color: #ffffff; line-height: 140%; text-align: center; word-wrap: break-word; font-weight: normal; font-family: arial,helvetica,sans-serif; font-size: 19px;">
-            <strong>People</strong><br /><em style="color: #fadd7e";>{$people}</em>
+            <strong>People</strong><br /><em style="color: #fadd7e";>'.$people.'</em>
         </h1>
         
             </td>
@@ -345,7 +348,7 @@ function email_confirmation($to, $name, $people, $datetime, $table, $phone){
             <td style="overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:arial,helvetica,sans-serif;" align="left">
                 
         <h1 class="v-color" style="margin: 0px; color: #ffffff; line-height: 140%; text-align: center; word-wrap: break-word; font-weight: normal; font-family: arial,helvetica,sans-serif; font-size: 19px;">
-            <strong>Table</strong><em style="color: #fadd7e";><br />{$table}</em>
+            <strong>Table</strong><em style="color: #fadd7e";><br />'.$table.'</em>
         </h1>
         
             </td>
@@ -359,7 +362,7 @@ function email_confirmation($to, $name, $people, $datetime, $table, $phone){
             <td style="overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:arial,helvetica,sans-serif;" align="left">
                 
         <h1 class="v-color" style="margin: 0px; color: #ffffff; line-height: 140%; text-align: center; word-wrap: break-word; font-weight: normal; font-family: arial,helvetica,sans-serif; font-size: 19px;">
-            <strong>E-mail</strong><br /><em style="color: #fadd7e";>{$to}</em>
+            <strong>E-mail</strong><br /><em style="color: #fadd7e";>'.$to.'</em>
         </h1>
         
             </td>
@@ -394,7 +397,7 @@ function email_confirmation($to, $name, $people, $datetime, $table, $phone){
             <td style="overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:arial,helvetica,sans-serif;" align="left">
                 
         <h1 class="v-color" style="margin: 0px; color: #faf7f7; line-height: 140%; text-align: center; word-wrap: break-word; font-weight: normal; font-family: arial,helvetica,sans-serif; font-size: 22px;">
-            <sub>You can always make changes to<br>your reservation or cancel it <a rel="noopener" style="color:#fadd7e; text-decoration: none;" href="https://www.lunibo.wdev-solutions.com/reservation_edit.php" target="_blank">here</a><br /></sub>
+            <sub>You can always make changes to<br>your reservation or cancel it <a rel="noopener" style="color:#fadd7e; text-decoration: none;" href="'.$url.'" target="_blank">here</a><br /></sub>
         </h1>
         
             </td>
@@ -437,7 +440,7 @@ function email_confirmation($to, $name, $people, $datetime, $table, $phone){
             <table align="left" border="0" cellspacing="0" cellpadding="0" width="32" height="32" style="border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;margin-right: 5px">
             <tbody><tr style="vertical-align: top"><td align="left" valign="middle" style="word-break: break-word;border-collapse: collapse !important;vertical-align: top">
                 <a href="https://facebook.com/" title="Facebook" target="_blank">
-                <img src="images/image-1.png" alt="Facebook" title="Facebook" width="32" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;max-width: 32px !important">
+                <img src="lunibo.wdev-solutions.com/images/image-1.png" alt="Facebook" title="Facebook" width="32" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;max-width: 32px !important">
                 </a>
             </td></tr>
             </tbody></table>
@@ -447,7 +450,7 @@ function email_confirmation($to, $name, $people, $datetime, $table, $phone){
             <table align="left" border="0" cellspacing="0" cellpadding="0" width="32" height="32" style="border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;margin-right: 5px">
             <tbody><tr style="vertical-align: top"><td align="left" valign="middle" style="word-break: break-word;border-collapse: collapse !important;vertical-align: top">
                 <a href="https://twitter.com/" title="Twitter" target="_blank">
-                <img src="images/image-2.png" alt="Twitter" title="Twitter" width="32" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;max-width: 32px !important">
+                <img src="lunibo.wdev-solutions.com/images/image-2.png" alt="Twitter" title="Twitter" width="32" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;max-width: 32px !important">
                 </a>
             </td></tr>
             </tbody></table>
@@ -457,7 +460,7 @@ function email_confirmation($to, $name, $people, $datetime, $table, $phone){
             <table align="left" border="0" cellspacing="0" cellpadding="0" width="32" height="32" style="border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;margin-right: 0px">
             <tbody><tr style="vertical-align: top"><td align="left" valign="middle" style="word-break: break-word;border-collapse: collapse !important;vertical-align: top">
                 <a href="https://instagram.com/" title="Instagram" target="_blank">
-                <img src="images/image-3.png" alt="Instagram" title="Instagram" width="32" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;max-width: 32px !important">
+                <img src="http://lunibo.wdev-solutions.com/images/image-3.png" alt="Instagram" title="Instagram" width="32" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;max-width: 32px !important">
                 </a>
             </td></tr>
             </tbody></table>
@@ -507,10 +510,11 @@ function email_confirmation($to, $name, $people, $datetime, $table, $phone){
         </table>
         <!--[if mso]></div><![endif]-->
         <!--[if IE]></div><![endif]-->
+        <p style="opacity: 0% !important;;">'.random_bytes(32).'</p>
         </body>
         
         </html>
-    `;
+        ';
 
     send_email($mailtext, $to, "Successful Lunibo Reservation!");
 

@@ -29,7 +29,7 @@ CREATE TABLE `customers` (
   `phone` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`customerID`),
   UNIQUE KEY `customers_customerID_uindex` (`customerID`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +38,7 @@ CREATE TABLE `customers` (
 
 LOCK TABLES `customers` WRITE;
 /*!40000 ALTER TABLE `customers` DISABLE KEYS */;
-INSERT INTO `customers` VALUES (1,'Jane','jane.doe@gmail.com','0676 812 82 53'),(2,'Barbara Goble','BarbaraDGoble@cuvox.de','0676 740 57 42'),(3,'Michael Frei','MichaelFrei@cuvox.de','0660 894 15 72'),(4,'Marcel Gruenwald','MarcelGruenewald@einrot.com','0650 780 13 13'),(5,'Doreen Roth','DoreenRoth@cuvox.de','0650 432 89 56'),(6,'Peter Theissen','PeterTheissen@cuvox.de','0664 748 32 64');
+INSERT INTO `customers` VALUES (1,'Jane','jane.doe@gmail.com','0676 812 82 53'),(2,'Barbara Goble','BarbaraDGoble@cuvox.de','0676 740 57 42'),(3,'Michael Frei','MichaelFrei@cuvox.de','0660 894 15 72'),(4,'Marcel Gruenwald','MarcelGruenewald@einrot.com','0650 780 13 13'),(5,'Doreen Roth','DoreenRoth@cuvox.de','0650 432 89 56'),(6,'Peter Theissen','PeterTheissen@cuvox.de','0664 748 32 64'),(20,'Bogdan Caleta Ivkovic','bogdan.caleta@gmail.com','+4368181790350'),(21,'bogggiiii','caletaivkovic.b00@htlwienwest.at','06588117'),(22,'katarina vig','katarinavig1515@gmail.com','123459');
 /*!40000 ALTER TABLE `customers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -74,7 +74,7 @@ CREATE TABLE `menu` (
   PRIMARY KEY (`itemID`),
   UNIQUE KEY `menu_itemID_uindex` (`itemID`),
   UNIQUE KEY `menu_name_uindex` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -83,7 +83,7 @@ CREATE TABLE `menu` (
 
 LOCK TABLES `menu` WRITE;
 /*!40000 ALTER TABLE `menu` DISABLE KEYS */;
-INSERT INTO `menu` VALUES (1,'Esterhàzy-Rostbraten','mit Wurzelgemüse und Kapern in Rahmsauce, dazu servieren wir breite Nudeln','food',14.99,631,0),(2,'Kaiserschnitzel','in Kapern-Zitronensauce, dazu servieren wir Reis','food',14.99,722,0),(4,'Coca Cola','0.35l','drink',2.99,533,0),(5,'Helles vom Fass','0,50l ','drink',4.19,221,0),(6,'Tafelspitzcocktail','mit Kernöl und Zwiebel','food',16.22,920,0),(8,'Dunkles','0.50l','drink',4.15,533,0),(9,'Radler','0.30l','drink',3.33,123,0),(12,'Alt-Wiener Backfleisch','verfeinert mit Kren und in der Pfanne goldbraun gebacken, dazu servieren wir Bratkartoffeln','food',12.22,335,0),(13,'Almdudler','0.35l','drink',2.19,219,0);
+INSERT INTO `menu` VALUES (1,'Esterhàzy-Rostbraten','mit Wurzelgemüse und Kapern in Rahmsauce, dazu servieren wir breite Nudeln','food',16.29,631,0),(2,'Spaghetti mit Zitronensoße','in Kapern-Zitronensauce, dazu servieren wir Reis','food',14.99,722,0),(4,'Coca Cola','0.35l','drink',2.99,533,0),(5,'Helles vom Fass','0,50l ','drink',4.19,221,0),(6,'Tafelspitzcocktail','mit Kernöl und Zwiebel','food',16.22,920,0),(8,'Dunkles','0.50l','drink',4.15,533,0),(9,'Radler','0.30l','drink',3.33,123,0),(12,'Alt-Wiener Backfleisch','verfeinert mit Kren und in der Pfanne goldbraun gebacken, dazu servieren wir Bratkartoffeln','food',12.22,335,0),(13,'Almdudler','0.35l','drink',2.19,219,0),(16,'test','test aa','food',33555,1234,1);
 /*!40000 ALTER TABLE `menu` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -101,13 +101,14 @@ CREATE TABLE `reservations` (
   `tableID` int(11) DEFAULT NULL,
   `customerID` int(11) NOT NULL,
   `deleted` tinyint(1) NOT NULL DEFAULT 0,
+  `key_temp` varchar(250) NOT NULL,
   PRIMARY KEY (`resID`),
   UNIQUE KEY `reservations_resID_uindex` (`resID`),
   KEY `reservations_tables_tableID_fk` (`tableID`),
   KEY `reservations_customers_customerID_fk` (`customerID`),
   CONSTRAINT `reservations_customers_customerID_fk` FOREIGN KEY (`customerID`) REFERENCES `customers` (`customerID`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `reservations_tables_tableID_fk` FOREIGN KEY (`tableID`) REFERENCES `tables` (`tableID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -116,7 +117,7 @@ CREATE TABLE `reservations` (
 
 LOCK TABLES `reservations` WRITE;
 /*!40000 ALTER TABLE `reservations` DISABLE KEYS */;
-INSERT INTO `reservations` VALUES (3,'2022-06-25 19:06:26',2,2,4,0),(4,'2022-06-25 20:07:12',4,7,2,0),(5,'2022-06-25 16:07:47',2,4,3,0),(6,'2022-03-28 16:07:59',4,6,1,0),(7,'2022-02-03 12:40:00',3,7,5,0),(8,'2022-05-25 16:07:51',6,12,6,0);
+INSERT INTO `reservations` VALUES (3,'2022-05-30 19:06:26',2,2,4,0,'4abafd7acfef2645123aa016e4055d5b93b5ca4bc6537f56a67a40f57ab8cac8'),(4,'2022-06-25 20:07:12',4,7,2,0,'4abafd7acfef2645123aa016e4033d5b93b5ca4bc6537f56a67a40f57ab8ccd7'),(5,'2022-06-25 16:07:47',3,6,3,0,'4abafd7acfef2645933a3a016e488cd5b93b5ca4bc6537f56a67a40f57abasj7'),(6,'2022-03-28 16:07:59',4,6,1,0,'4abafd7acfef2645933a3a016e477cd5b93b5ca4bc6537f56a67a40f57ab8hj5'),(7,'2022-02-03 12:40:00',3,7,5,0,'4abafd7acfef2645933a3a016e466cd5b93b5ca4bc6537f56a67a40f57ab8hj4'),(8,'2022-05-25 16:07:51',6,12,6,0,'4abafd7acfef2645123aa016e4055d5b93b5ca4bc6537f56a67a40f57ab8cac3'),(21,'2022-07-05 19:39:00',5,12,20,0,'4abafd7acfef2645123aa016e4044d5b93b5ca4bc6537f56a67a40f57ab8ccs1'),(22,'2022-07-05 19:39:00',4,5,20,0,'4abafd7acfef2645123aa016e4033d5b93b5ca4bc6537f56a67a40f57ab8ccd2'),(23,'2022-07-05 19:39:00',2,2,20,0,'4abafd7acfef2645123aa016e400cd5b93b5ca4bc6537f56a67a40f57ab8ccd2'),(24,'2022-07-05 19:39:00',4,7,20,1,'4abafd7acfef2645123aa016e400cd5b93b5ca4bc6537f56a67a40f57ab8ccs1'),(25,'2022-07-05 19:39:00',4,8,20,1,'4abafd7acfef2645123aa016e400cd5b93b5ca4bc6537f56a67a40f57ab8cac3'),(26,'2022-07-05 19:39:00',4,9,20,1,'4abafd7acfef2645933a3a016e400cd5b93b5ca4bc6537f56a67a40f57ab8hj4'),(28,'2022-07-05 16:18:00',4,7,20,1,'4abafd7acfef2645933a3a016e400cd5b93b5ca4bc6537f56a67a40f57ab8cc9'),(29,'2022-07-05 19:39:00',4,6,20,0,'d32b8bfefebc2b91b6be1c3b5b4fb98d2f925e6614ccce0f33c1edb8d6251558'),(30,'2022-12-12 12:12:00',4,5,20,0,'04b910f75ff0c9862dfcec23ba0dc30b33f96c24a561e87bac3cd8f877fe342a'),(31,'2022-12-12 12:12:00',4,6,20,0,'fb975b6670c3c36630e26d4b7a34547b2429319749e7589f19227726e00603ef');
 /*!40000 ALTER TABLE `reservations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -203,4 +204,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-27 13:44:33
+-- Dump completed on 2022-06-26 21:46:32

@@ -69,11 +69,11 @@ switch ($row['itemGroup']) {
                         </div>
                         <div class="form-group col-4">
                             <label>Price</label>
-                            <input type="number" step="any" name="price" class="form-control" value="<?php echo $row['price'] ?>" required>
+                            <input type="number" step="1" min=0 name="price" class="form-control" value="<?php echo $row['price'] ?>" required>
                         </div>
                         <div class="form-group col-4">
                             <label>KCAL</label>
-                            <input type="number" step="any" name="kcal" class="form-control" value="<?php echo $row['kcal'] ?>" required>
+                            <input type="number" step="100" min=0 name="kcal" class="form-control" value="<?php echo $row['kcal'] ?>" required>
                         </div>
                     </div>
                     

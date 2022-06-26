@@ -45,7 +45,7 @@ if(isset($_POST['name'])){
 		array_push($notifications, "Your reservation has been successfully created! Thank you very much!");
 		$datetime = date('d F Y H:i', strtotime($_POST['date'].", ".$_POST['time']));
 
-		email_confirmation($email, $name, $people, $datetime, $tableID, $number);
+		email_confirmation($email, $name, $people, $datetime, $tableID, $number, $key);
 	}
 }
 
@@ -62,7 +62,7 @@ $drinks = select_cond($conn, MENU, "itemGroup='drink' AND deleted=0");
 <html>
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title> Test </title>
+		<title>LuNiBo</title>
 		<link rel="stylesheet" href="/css/all.css">
 		<link rel="stylesheet" href="/css/fontawesome.css">
 		<link rel="stylesheet" href="style.css">
@@ -88,23 +88,21 @@ if(count($errors)>0){
 ?>
 <section class="home">
 	<header>
-		
-			<a href="#" class="brand">LuNiBo</a>
-				<div class="menu">
-					<div class="btn">
-						<i class="fas fa-times close-btn"></i>
-				</div> 
-					<a href="#section-main">HOME</a></li>
-					<a href="#about">ABOUT</a></li>
-					<a href="#menu">MENU</a></li>
-					<a href="#reserve">RESERVE</a></li>
-					<a href="#contact">CONTACT</a></li>
-				</div>
-					<div class="btn">
-						<i class="fa fa-bars menu-btn"></i>
-					</div>
-			
-
+		<a href="#" class="brand">LuNiBo</a>
+			<div class="menu">
+				<div class="btn">
+					<i class="fas fa-times close-btn"></i>
+			</div> 
+				<a href="#section-main">HOME</a></li>
+				<a href="#about">ABOUT</a></li>
+				<a href="#menu">MENU</a></li>
+				<a href="#reserve">RESERVE</a></li>
+				<a href="#contact">CONTACT</a></li>
+				<a href="login.php">ADMIN PANEL</a></li>
+			</div>
+			<div class="btn">
+				<i class="fa fa-bars menu-btn"></i>
+			</div>
 	</header>
 
 	<section id="section-main">
@@ -255,16 +253,17 @@ if(count($errors)>0){
 					<div> <span>How many people ?</span></div>
 
 				<select name="people" id="people" required>
-				<option value=""> <---People---></option>
+				<option value="">People</option>
 				<option value="1">1 People</option>
 				<option value="2">2 People</option>
 				<option value="3">3 People</option>
 				<option value="4">4 People</option>
-				<option value="4">5 People</option>
-				<option value="4">6 People</option>
-				<option value="4">7 People</option>
-				<option value="4">8 People</option>
-				<option value="4">9 People</option>
+				<option value="5">5 People</option>
+				<option value="6">6 People</option>
+				<option value="7">7 People</option>
+				<option value="8">8 People</option>
+				<option value="9">9 People</option>
+				<option value="10">10 People</option>
 			</select> 
 			</div>
 			

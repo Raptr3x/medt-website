@@ -52,7 +52,8 @@ if(isset($_POST['submit'])){
         updateMultipleSql($conn, CUST, array("fullname", "email", "phone"), array("'".$_POST['fullname']."'", "'".$_POST['email']."'", "'".$_POST['phone']."'"), "customerID", $customerID);
         
         array_push($notifications, "Successfully updated!");
-   
+        $datetime = date_format(date_create($_POST['reservationDatetime']),"d F Y H:i");
+        email_confirmation($_POST['email'], $_POST['fullname'], $_POST['numOfPeople'], $datetime, $tableID, $_POST['phone'], $_GET['key']);
     }
 }
 

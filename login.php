@@ -84,13 +84,15 @@ if (isset($_POST['login_btn'])) {
 											
 										</div>
 										<div class="form-group no-margin">
-											<input type="submit" class="btn btn-info btn-block" value="Login" name="login_btn">
+											<input type="submit" class="btn btn-info btn-block mt-5" value="Login" name="login_btn">
 										</div>
 									</form>
 								</div>
 							</div>
 							<footer class="footer mt-3">
-								
+								<p>Demo Login</p>
+								<p>E-mail: demo@demo.com</p>
+								<p>Password: demo</p>
 							</footer>
 						</div>
 					</div>
@@ -98,7 +100,7 @@ if (isset($_POST['login_btn'])) {
 			</div>
 		</main>
 
-		<script src="assets/graindashboard/js/graindashboard.js"></script>
-		<script src="assets/graindashboard/js/graindashboard.vendor.js"></script>
+		<script src="graindashboard/js/graindashboard.js"></script>
+		<script src="graindashboard/js/graindashboard.vendor.js"></script>
 	</body>
 </html>
