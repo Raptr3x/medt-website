@@ -8,7 +8,7 @@ define("VERSION", "v0.0.1");
 define("DBPREFIX", "");
 
 
-define("ASSETS", "./assets");
+define("ASSETS", "");
 define("CSS", ASSETS."/css");
 define("JS", ASSETS."/js");
 define("IMGS", ASSETS."/imgs");
@@ -16,15 +16,7 @@ define("UI", ASSETS."/graindashboard");
 define("UI_CSS", UI."/css");
 define("UI_JS", UI."/js");
 
-// Check if dev or not
-    $sub = explode(".", $_SERVER['HTTP_HOST'])[0];
-    if($sub!="www"){
-        define("DBPREFIX", "");
-    }
-    else{
-        define("DBPREFIX", "dev_");
-    }
-
+// define("DBPREFIX", "");
 //tables
 define("RESER", DBPREFIX."reservations");
 define('USERS', DBPREFIX.'users');

@@ -39,12 +39,13 @@ if(isset($_POST['name'])){
 		array_push($errors, "Unfortinately there are no free tables at the moment for the selected date.\nPlease select another one.");
 	}else{
 		$tableID = $tableID[0]['tableID'];
-		$resCol = "reservationDatetime, numOfPeople, tableID, customerID, key";
+		$resCol = "reservationDatetime, numOfPeople, tableID, customerID, key_temp";
 		$resVal = "'".$combinedDT."', ".$people.", ".$tableID.", ".$customerID.", '".$key."'";
 		insert($conn, RESER, $resCol, $resVal);
 		array_push($notifications, "Your reservation has been successfully created! Thank you very much!");
 	}
 }
+
 
 
 
@@ -242,7 +243,7 @@ if(count($errors)>0){
 		</div>
 		<div>
 			<span>Your phone number ?</span>
-			<input type="number" name="number" id="number" placeholder="Write your number here..." required>
+			<input type="phone" name="number" id="number" placeholder="Write your number here..." required>
 		</div> 
 		<br> 
 		<div class="fuerReservation">
