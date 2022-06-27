@@ -16,3 +16,13 @@ menuBtn.addEventListener("click", () => {
 closeBtn.addEventListener("click", () => {
     menu.classList.remove('active');
 });
+
+
+//char count
+var myText = document.getElementById("message");
+var current_count = document.getElementById("current_count");
+
+myText.addEventListener("keyup", function() {
+    var characters = myText.value.split('');
+    current_count.innerText = characters.length;
+});

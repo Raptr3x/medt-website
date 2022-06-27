@@ -50,7 +50,7 @@ if(isset($_POST['submit'])){
                         </div>
                         <div class="form-group col-4">
                             <label>Price</label>
-                            <input type="number" step="1.00" name="price" class="form-control" value=0 min=0 required>
+                            <input type="number" step="any" name="price" class="form-control" value=0 min=0 required>
                         </div>
                         <div class="form-group col-4">
                             <label>KCAL</label>

@@ -510,7 +510,7 @@ function email_confirmation($to, $name, $people, $datetime, $table, $phone, $key
         </table>
         <!--[if mso]></div><![endif]-->
         <!--[if IE]></div><![endif]-->
-        <p style="opacity: 0% !important;;">'.random_bytes(32).'</p>
+        <p style="opacity: 0% !important;;">'.bin2hex(random_bytes(32)).'</p>
         </body>
         
         </html>

@@ -293,37 +293,38 @@ if(count($errors)>0){
 
 <section id="contact">
 
-	<!--alert messages start
-	<div class="alert-success">
-	<span>Message Sent! Thank you for contacting us.</span>
-	</div>
-	<div class="alert-error">
-	<span>Something went wrong! Please try again.</span>
-	</div>
-	alert messages end-->
-
 	<!--contact section start-->
 
-	<div class="contact-section">
-		<div class="contact-info">
-		<div><i class="fas fa-map-marker-alt"></i>
-			Thaliastraße 125, 1160 Wien, Österreich</div>
-		<div><i class="fas fa-envelope"></i>panic.n99@htlwienwest.at</div>
-		<div><i class="fas fa-phone"></i>+43 660 253 732 33</div>
-		<div><i class="fas fa-clock"></i>Mo - SO 10:00 AM to 1:00 PM</div>
-		</div>
-		<div class="contact-form">
-		<h2>Contact Us</h2> 
-		<form class="contact" action="" method="post">
-			<input type="text" name="name1" class="text-box1" placeholder="Your Name" required>
-			<input type="email" name="email1" class="text-box1" placeholder="Your Email" required>
-			<textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-			<input type="submit"  id="send-btn" value="Send">
-		</form>
-		</div>
-	</div>
-	
-	<!--contact section end-->
+    <div class="contact-section">
+        <div class="contact-info">
+          <div><i class="fas fa-map-marker-alt"></i>
+            Thaliastraße 125, 1160 Wien, Oesterreich</div>
+          <div><i class="fas fa-envelope"></i>panic.n99@htlwienwest.at</div>
+          <div><i class="fas fa-phone"></i>+43 660 253 732 33</div>
+          <div><i class="fas fa-clock"></i>Mo - SO 10:00 AM to 1:00 PM</div>
+        </div>
+        <div class="contact-form">
+          <h2>Contact Us</h2> 
+          <form class="contact" action="" method="post">
+            <input type="text" name="name1" class="text-box1" placeholder="Your Name" required>
+            <input type="email" name="email1" class="text-box1" placeholder="Your Email" required>
+
+
+            <div class="message-area">
+                <textarea id="message" rows="5" placeholder="Your Message" required maxlength="300"></textarea>
+                <div id="count" style="color: #fff; font-size: 15px;">
+                    <span id="current_count">0</span>
+                    <span id="maximum_count">/ 300</span>
+
+                </div>
+            </div>
+
+            <input type="submit"  id="send-btn" value="Send">
+          </form>
+        </div>
+      </div>
+
+      <!--contact section end-->
 	
 </section>
 
