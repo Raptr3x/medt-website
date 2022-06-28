@@ -1,4 +1,4 @@
-# medt-website
+# Diplomarbeit
 full pledged restaurant website with an admin panel for working with reservations as well as restaurant menu
 
 Home page reservation submission
